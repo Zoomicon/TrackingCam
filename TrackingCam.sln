@@ -3,12 +3,22 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackingCam.Plugins.PCL", "TrackingCam.Plugins.PCL\TrackingCam.Plugins.PCL.csproj", "{C05149B4-5800-4834-9AC2-0CBD02C334FF}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CC72F005-C9BE-4320-9490-B27022E42739}"
 	ProjectSection(SolutionItems) = preProject
 		Readme.txt = Readme.txt
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackingCam.Plugins", "TrackingCam.Plugins\TrackingCam.Plugins.csproj", "{DFDFD459-83A0-4277-9698-3E37E5F25E69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackingCam.Tracker.Ubisense", "TrackingCam.Tracker.Ubisense\TrackingCam.Tracker.Ubisense.csproj", "{F45E6EF7-8634-49A3-941E-0348092B780B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackingCam.Tracker.KinectAudio", "TrackingCam.Tracker.KinectAudio\TrackingCam.Tracker.KinectAudio.csproj", "{04142E1D-8307-4508-9AD8-FF02608B1C1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackingCam.VideoInput.Foscam", "TrackingCam.VideoInput.Foscam\TrackingCam.VideoInput.Foscam.csproj", "{86C62101-F1A3-4F78-9B5A-E1934D845B41}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackingCam.CameraPTZ.Foscam", "TrackingCam.CameraPTZ.Foscam\TrackingCam.CameraPTZ.Foscam.csproj", "{C75D40D9-3CAF-48B8-A53A-A078B510B4C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackingCam.VideoInput.KinectV1", "TrackingCam.VideoInput.KinectV1\TrackingCam.VideoInput.KinectV1.csproj", "{9E40D4F3-DEBC-4E2D-BA57-232CAB2C3FE2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -16,10 +26,30 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C05149B4-5800-4834-9AC2-0CBD02C334FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C05149B4-5800-4834-9AC2-0CBD02C334FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C05149B4-5800-4834-9AC2-0CBD02C334FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C05149B4-5800-4834-9AC2-0CBD02C334FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFDFD459-83A0-4277-9698-3E37E5F25E69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFDFD459-83A0-4277-9698-3E37E5F25E69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFDFD459-83A0-4277-9698-3E37E5F25E69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFDFD459-83A0-4277-9698-3E37E5F25E69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F45E6EF7-8634-49A3-941E-0348092B780B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F45E6EF7-8634-49A3-941E-0348092B780B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F45E6EF7-8634-49A3-941E-0348092B780B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F45E6EF7-8634-49A3-941E-0348092B780B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04142E1D-8307-4508-9AD8-FF02608B1C1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04142E1D-8307-4508-9AD8-FF02608B1C1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04142E1D-8307-4508-9AD8-FF02608B1C1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04142E1D-8307-4508-9AD8-FF02608B1C1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86C62101-F1A3-4F78-9B5A-E1934D845B41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86C62101-F1A3-4F78-9B5A-E1934D845B41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86C62101-F1A3-4F78-9B5A-E1934D845B41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86C62101-F1A3-4F78-9B5A-E1934D845B41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C75D40D9-3CAF-48B8-A53A-A078B510B4C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C75D40D9-3CAF-48B8-A53A-A078B510B4C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C75D40D9-3CAF-48B8-A53A-A078B510B4C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C75D40D9-3CAF-48B8-A53A-A078B510B4C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E40D4F3-DEBC-4E2D-BA57-232CAB2C3FE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E40D4F3-DEBC-4E2D-BA57-232CAB2C3FE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E40D4F3-DEBC-4E2D-BA57-232CAB2C3FE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E40D4F3-DEBC-4E2D-BA57-232CAB2C3FE2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
