@@ -15,4 +15,5 @@ Technologies:
  - Kinect Audio Positioning - http://github.com/birbilis/KinectAudioPositioning
  - Ubisense - http://UbisensePositioning.codeplex.com
 
-for finding video stream URL and for PTZ control may also consider ONVIF sometime in the future (http://www.onvif.org - possibly use code from OnvifDeviceManager - http://sourceforge.net/projects/onvifdm)
+for finding video stream URL and for PTZ control may also consider ONVIF sometime in the future
+(http://www.onvif.org - possibly use code from OnvifDeviceManager - http://sourceforge.net/projects/onvifdm)

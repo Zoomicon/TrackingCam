@@ -1,14 +1,18 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: KinectV1Video.cs
-//Version: 20151116
+//Version: 20151117
 
 using System;
+using System.ComponentModel.Composition;
 using System.Windows;
 
 namespace TrackingCam.Plugins.Video
 {
-
-  public class KinectV1VideoDisplay : IVideo
+  //MEF
+  [Export("Video", typeof(IVideo))]
+  [ExportMetadata("Description", "Kinect v1")]
+  [PartCreationPolicy(CreationPolicy.Shared)]
+  public class KinectV1Video : IVideo
   {
 
     #region --- Properties ---
