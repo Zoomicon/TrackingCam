@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{04142E1D-8307-4508-9AD8-FF02608B1C1C}</ProjectGuid>
+    <ProjectGuid>{9E40D4F3-DEBC-4E2D-BA57-232CAB2C3FE2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TrackingCam.Tracker.KinectAudio</RootNamespace>
-    <AssemblyName>TrackingCam.Tracker.KinectAudio</AssemblyName>
+    <RootNamespace>TrackingCam.Video.KinectV1</RootNamespace>
+    <AssemblyName>TrackingCam.Video.KinectV1</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,14 +30,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="KinectAudioPositioning">
-      <HintPath>..\Libraries\KinectAudioPositioning.dll</HintPath>
+    <Reference Include="LightBuzz.Vitruvius, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Vitruvius.1.0.1\lib\LightBuzz.Vitruvius.dll</HintPath>
+      <Private>True</Private>
     </Reference>
+    <Reference Include="LightBuzz.Vitruvius.WPF, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Vitruvius.1.0.1\lib\LightBuzz.Vitruvius.WPF.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="KinectV1Video.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TrackingCam.Plugins\TrackingCam.Plugins.csproj">

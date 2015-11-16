@@ -6,9 +6,10 @@ TrackingCam is an application featuring:
 
 Technologies:
 
-* Video input and display (MJPEG, H.264/RTSP):
-* Camera PTZ control:
- - Foscam MJPEG & HD IP Cameras - http://FoscamController.codeplex.com
+* Video input and display
+* Camera PTZ control
+ - Foscam MJPEG & HD (H.264/RTSP) IP Cameras - http://FoscamController.codeplex.com
+ - Kinect for Xbox 360 & Kinect for Windows (KfW) v1 - http://github.com/birbilis/Vitruvius
 
 * Position tracking
  - Kinect Audio Positioning - http://github.com/birbilis/KinectAudioPositioning

@@ -35,10 +35,9 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IPTZControl.cs" />
+    <Compile Include="ICameraPTZ.cs" />
     <Compile Include="ITracker.cs" />
-    <Compile Include="IVideoCapture.cs" />
-    <Compile Include="IVideoDisplay.cs" />
+    <Compile Include="IVideo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

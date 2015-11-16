@@ -1,16 +1,21 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
-//File: IPTZControl.cs
-//Version: 20151021
+//File: ICameraPTZ.cs
+//Version: 20151116
 
-namespace TrackingCam.Plugins
+namespace TrackingCam.Plugins.CameraPTZ
 {
 
-  public interface IPTZControl
+  public interface ICameraPTZ
   {
+
+    #region --- Properties ---
+
     double PanAngle { get; }
     double TiltAngle { get; }
 
     double ZoomLevel { get; }
+
+    #endregion
   }
 
 }
