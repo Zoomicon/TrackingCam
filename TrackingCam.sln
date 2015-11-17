@@ -20,6 +20,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackingCam.Video.KinectV1"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackingCam.Video.Foscam", "TrackingCam.Video.Foscam\TrackingCam.Video.Foscam.csproj", "{86C62101-F1A3-4F78-9B5A-E1934D845B41}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackingCam", "TrackingCam\TrackingCam.csproj", "{887706FE-1AF3-435A-B55A-F517C8C49F06}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +52,10 @@ Global
 		{86C62101-F1A3-4F78-9B5A-E1934D845B41}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86C62101-F1A3-4F78-9B5A-E1934D845B41}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86C62101-F1A3-4F78-9B5A-E1934D845B41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{887706FE-1AF3-435A-B55A-F517C8C49F06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{887706FE-1AF3-435A-B55A-F517C8C49F06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{887706FE-1AF3-435A-B55A-F517C8C49F06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{887706FE-1AF3-435A-B55A-F517C8C49F06}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

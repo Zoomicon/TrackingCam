@@ -48,6 +48,26 @@
       <Project>{dfdfd459-83a0-4277-9698-3e37e5f25e69}</Project>
       <Name>TrackingCam.Plugins</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TrackingCam.Tracking.KinectAudio\TrackingCam.Tracking.KinectAudio.csproj">
+      <Project>{04142e1d-8307-4508-9ad8-ff02608b1c1c}</Project>
+      <Name>TrackingCam.Tracking.KinectAudio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TrackingCam.Tracking.Ubisense\TrackingCam.Tracking.Ubisense.csproj">
+      <Project>{f45e6ef7-8634-49a3-941e-0348092b780b}</Project>
+      <Name>TrackingCam.Tracking.Ubisense</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TrackingCam.Video.Foscam\TrackingCam.Video.Foscam.csproj">
+      <Project>{86c62101-f1a3-4f78-9b5a-e1934d845b41}</Project>
+      <Name>TrackingCam.Video.Foscam</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TrackingCam.Video.KinectV1\TrackingCam.Video.KinectV1.csproj">
+      <Project>{9e40d4f3-debc-4e2d-ba57-232cab2c3fe2}</Project>
+      <Name>TrackingCam.Video.KinectV1</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TrackingCam\TrackingCam.csproj">
+      <Project>{887706fe-1af3-435a-b55a-f517c8c49f06}</Project>
+      <Name>TrackingCam</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
