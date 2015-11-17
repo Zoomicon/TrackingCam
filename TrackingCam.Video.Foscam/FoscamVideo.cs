@@ -87,7 +87,7 @@ namespace TrackingCam.Plugins.Video
     {
       get
       {
-        return _video.VideoDisplay;
+        return (_video != null) ? _video.VideoDisplay : null;
       }
     }
 
@@ -97,12 +97,14 @@ namespace TrackingCam.Plugins.Video
 
     public void Start()
     {
-      _video.StartVideo();
+      if (_video != null)
+        _video.StartVideo();
     }
 
     public void Stop()
     {
-      _video.StopVideo();
+      if (_video != null)
+        _video.StopVideo();
     }
 
     #endregion

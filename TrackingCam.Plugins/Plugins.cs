@@ -28,8 +28,8 @@ namespace TrackingCam.Plugins
       //TODO: replace the following code to load plugins from a subfolder, remove specific plugin references from application project and set plugin projects to copy their DLL to a "Plugins" subfolder under the folder where the executable of the app is built
       string[] assemblies = new string[]
       {
-        "TrackingCam.Video.Foscam.dll",
         "TrackingCam.Video.KinectV1.dll",
+        "TrackingCam.Video.Foscam.dll",
         //
         "TrackingCam.CameraPTZ.Foscam.dll",
         //

@@ -6,6 +6,9 @@ using System;
 using System.ComponentModel.Composition;
 using System.Windows;
 
+using LightBuzz.Vitruvius;
+using LightBuzz.Vitruvius.Controls;
+
 namespace TrackingCam.Plugins.Video
 {
   //MEF
@@ -14,6 +17,12 @@ namespace TrackingCam.Plugins.Video
   [PartCreationPolicy(CreationPolicy.Shared)]
   public class KinectV1Video : IVideo
   {
+
+    #region --- Fields ---
+
+    protected KinectViewer _kinectViewer;
+
+    #endregion
 
     #region --- Properties ---
 
@@ -29,7 +38,10 @@ namespace TrackingCam.Plugins.Video
     {
       get
       {
-        throw new NotImplementedException();
+        if (_kinectViewer == null)
+          _kinectViewer = new KinectViewer() { FrameType = VisualizationMode.Color };
+
+        return _kinectViewer;
       }
     }
 
@@ -39,12 +51,12 @@ namespace TrackingCam.Plugins.Video
 
     public void Start()
     {
-      throw new NotImplementedException();
+      //NOP
     }
 
     public void Stop()
     {
-      throw new NotImplementedException();
+      //NOP
     }
 
     #endregion

@@ -1,5 +1,5 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
-//File: MainWindow.cs
+//File: MainWindow.xaml.cs
 //Version: 20151117
 
 using System.Windows;
@@ -23,6 +23,32 @@ namespace TrackingCam
     }
 
     #endregion
+
+    #region --- Methods ---
+
+    public void AddVideo()
+    {
+      if (video != null)
+      {
+        UIElement display = video.Display;
+        if (display != null)
+          LayoutRoot.Children.Add(video.Display);
+
+        video.Start();
+      }
+    }
+
+    #endregion
+
+    #region --- Events ---
+
+    private void Window_Loaded(object sender, RoutedEventArgs e)
+    {
+      AddVideo();
+    }
+
+    #endregion
+
   }
 
 }
