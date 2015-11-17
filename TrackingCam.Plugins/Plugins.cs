@@ -5,42 +5,44 @@
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 
-namespace TrackingCam.Plugins.CameraPTZ
+namespace TrackingCam.Plugins
 {
 
-  public class Plugins
+  public static class PluginsCatalog
   {
 
     #region --- Fields ---
 
-    protected static CompositionContainer mefContainer;
+    public static CompositionContainer mefContainer;
 
     #endregion
 
     #region --- Methods ---
 
-    public void InitPluginsCatalog()
+    public static void Init(object attributedPart)
     {
+      if (mefContainer != null) return;
+
       AggregateCatalog partsCatalog = new AggregateCatalog();
 
       //TODO: replace the following code to load plugins from a subfolder, remove specific plugin references from application project and set plugin projects to copy their DLL to a "Plugins" subfolder under the folder where the executable of the app is built
       string[] assemblies = new string[]
       {
-        "TrackingCam.Video.Foscam",
-        "TrackingCam.Video.KinectV1",
+        "TrackingCam.Video.Foscam.dll",
+        "TrackingCam.Video.KinectV1.dll",
         //
-        "TrackingCam.CameraPTZ.Foscam",
+        "TrackingCam.CameraPTZ.Foscam.dll",
         //
-        "TrackingCam.Tracking.KinectAudio",
-        "TrackingCam.Tracking.Ubisense"
+        "TrackingCam.Tracking.KinectAudio.dll",
+        "TrackingCam.Tracking.Ubisense.dll"
       };
 
       foreach (string s in assemblies)
         partsCatalog.Catalogs.Add(new AssemblyCatalog(s));
 
       mefContainer = new CompositionContainer(partsCatalog);
-      mefContainer.SatisfyImportsOnce(this);
-      //CompositionInitializer.SatisfyImports(this);
+      mefContainer.SatisfyImportsOnce(attributedPart);
+      //CompositionInitializer.SatisfyImports(attributedPart);
     }
 
     #endregion

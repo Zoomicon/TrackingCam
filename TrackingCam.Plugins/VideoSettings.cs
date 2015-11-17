@@ -2,7 +2,6 @@
 //File: VideoConstants.cs
 //Version: 20151116
 
-using System.Windows;
 
 namespace TrackingCam.Plugins.Video
 {

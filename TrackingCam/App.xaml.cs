@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
+//File: App.xaml.cs
+//Version: 20151117
+
 using System.Windows;
 
 namespace TrackingCam

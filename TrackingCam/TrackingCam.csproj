@@ -35,13 +35,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
@@ -62,6 +57,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="MainWindow.Plugins.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -85,6 +81,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Compile Include="MainWindow.Video.cs" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -93,6 +90,32 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TrackingCam.CameraPTZ.Foscam\TrackingCam.CameraPTZ.Foscam.csproj">
+      <Project>{c75d40d9-3caf-48b8-a53a-a078b510b4c3}</Project>
+      <Name>TrackingCam.CameraPTZ.Foscam</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TrackingCam.Plugins\TrackingCam.Plugins.csproj">
+      <Project>{dfdfd459-83a0-4277-9698-3e37e5f25e69}</Project>
+      <Name>TrackingCam.Plugins</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TrackingCam.Tracking.KinectAudio\TrackingCam.Tracking.KinectAudio.csproj">
+      <Project>{04142e1d-8307-4508-9ad8-ff02608b1c1c}</Project>
+      <Name>TrackingCam.Tracking.KinectAudio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TrackingCam.Tracking.Ubisense\TrackingCam.Tracking.Ubisense.csproj">
+      <Project>{f45e6ef7-8634-49a3-941e-0348092b780b}</Project>
+      <Name>TrackingCam.Tracking.Ubisense</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TrackingCam.Video.Foscam\TrackingCam.Video.Foscam.csproj">
+      <Project>{86c62101-f1a3-4f78-9b5a-e1934d845b41}</Project>
+      <Name>TrackingCam.Video.Foscam</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TrackingCam.Video.KinectV1\TrackingCam.Video.KinectV1.csproj">
+      <Project>{9e40d4f3-debc-4e2d-ba57-232cab2c3fe2}</Project>
+      <Name>TrackingCam.Video.KinectV1</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
