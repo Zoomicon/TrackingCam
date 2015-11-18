@@ -33,14 +33,17 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
-    <Reference Include="UbisenseLocationServices">
-      <HintPath>..\Libraries\UbisenseLocationServices.dll</HintPath>
+    <Reference Include="UbisenseLocationServices, Version=2.1.9.2633, Culture=neutral, PublicKeyToken=bf00ae4f6f53f646, processorArchitecture=MSIL">
+      <HintPath>..\packages\UbisensePositioning.1.0.0\lib\net40\UbisenseLocationServices.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="UbisensePlatform">
-      <HintPath>..\Libraries\UbisensePlatform.dll</HintPath>
+    <Reference Include="UbisensePlatform, Version=2.1.9.2633, Culture=neutral, PublicKeyToken=bf00ae4f6f53f646, processorArchitecture=MSIL">
+      <HintPath>..\packages\UbisensePositioning.1.0.0\lib\net40\UbisensePlatform.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="UbisensePositioning">
-      <HintPath>..\Libraries\UbisensePositioning.dll</HintPath>
+    <Reference Include="UbisensePositioning, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UbisensePositioning.1.0.0\lib\net40\UbisensePositioning.dll</HintPath>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -51,6 +54,9 @@
       <Project>{dfdfd459-83a0-4277-9698-3e37e5f25e69}</Project>
       <Name>TrackingCam.Plugins</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

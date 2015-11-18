@@ -30,11 +30,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CameraControllers">
-      <HintPath>..\Libraries\CameraControllers.dll</HintPath>
+    <Reference Include="CameraControllers, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FoscamController.1.0.0\lib\net45\CameraControllers.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="FoscamCameraControllers">
-      <HintPath>..\Libraries\FoscamCameraControllers.dll</HintPath>
+    <Reference Include="FoscamCameraControllers, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FoscamController.1.0.0\lib\net45\FoscamCameraControllers.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
@@ -50,6 +52,9 @@
       <Project>{dfdfd459-83a0-4277-9698-3e37e5f25e69}</Project>
       <Name>TrackingCam.Plugins</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -30,8 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="KinectAudioPositioning">
-      <HintPath>..\Libraries\KinectAudioPositioning.dll</HintPath>
+    <Reference Include="KinectAudioPositioning, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\KinectAudioPositioning.1.0.0\lib\net40\KinectAudioPositioning.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -45,6 +46,9 @@
       <Project>{dfdfd459-83a0-4277-9698-3e37e5f25e69}</Project>
       <Name>TrackingCam.Plugins</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
