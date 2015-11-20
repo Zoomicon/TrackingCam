@@ -30,18 +30,34 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CameraControllers, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FoscamController.1.0.0\lib\net45\CameraControllers.dll</HintPath>
+    <Reference Include="CameraControllers, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FoscamController.1.1.0\lib\net45\CameraControllers.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="FoscamCameraControllers, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FoscamController.1.0.0\lib\net45\FoscamCameraControllers.dll</HintPath>
+    <Reference Include="FoscamCameraControllers, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FoscamController.1.1.0\lib\net45\FoscamCameraControllers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FoscamHDCameraController, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FoscamController.1.1.0\lib\net45\FoscamHDCameraController.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FoscamMJPEGCameraController, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FoscamController.1.1.0\lib\net45\FoscamMJPEGCameraController.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MimeMultiPart, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FoscamController.1.1.0\lib\net45\MimeMultiPart.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
+    <Reference Include="UpdatingImage, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FoscamController.1.1.0\lib\net45\UpdatingImage.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FoscamVideo.cs" />

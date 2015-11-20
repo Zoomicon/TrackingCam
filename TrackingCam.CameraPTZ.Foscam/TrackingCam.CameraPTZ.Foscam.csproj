@@ -30,15 +30,37 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CameraControllers">
-      <HintPath>..\Libraries\CameraControllers.dll</HintPath>
+    <Reference Include="CameraControllers, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FoscamController.1.1.0\lib\net45\CameraControllers.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="FoscamCameraControllers">
-      <HintPath>..\Libraries\FoscamCameraControllers.dll</HintPath>
+    <Reference Include="FoscamCameraControllers, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FoscamController.1.1.0\lib\net45\FoscamCameraControllers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FoscamHDCameraController, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FoscamController.1.1.0\lib\net45\FoscamHDCameraController.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FoscamMJPEGCameraController, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FoscamController.1.1.0\lib\net45\FoscamMJPEGCameraController.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MimeMultiPart, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FoscamController.1.1.0\lib\net45\MimeMultiPart.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
+    <Reference Include="UpdatingImage, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FoscamController.1.1.0\lib\net45\UpdatingImage.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="xZune.Vlc, Version=15.10.25.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\xZune.Vlc.15.10.25\lib\net45\xZune.Vlc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -64,6 +86,9 @@
       <Project>{9e40d4f3-debc-4e2d-ba57-232cab2c3fe2}</Project>
       <Name>TrackingCam.Video.KinectV1</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
