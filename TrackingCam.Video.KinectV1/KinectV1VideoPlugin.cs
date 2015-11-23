@@ -1,6 +1,8 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: KinectV1Video.cs
-//Version: 20151122
+//Version: 20151123
+
+//TODO: maybe extend IDisposable
 
 using System;
 using System.ComponentModel.Composition;
@@ -17,7 +19,7 @@ namespace TrackingCam.Plugins.Video
   [Export("Video", typeof(IVideo))]
   [ExportMetadata("Description", "Kinect v1")]
   [PartCreationPolicy(CreationPolicy.Shared)]
-  public class KinectV1Video : IVideo
+  public class KinectV1VideoPlugin : IVideo
   {
 
     #region --- Fields ---
@@ -29,7 +31,7 @@ namespace TrackingCam.Plugins.Video
 
     #region --- Initialization ---
 
-    public KinectV1Video()
+    public KinectV1VideoPlugin()
     {
       _kinectSensor = SensorExtensions.Default();
 

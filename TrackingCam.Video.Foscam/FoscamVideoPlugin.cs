@@ -1,6 +1,6 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: FoscamVideo.cs
-//Version: 20151117
+//Version: 20151123
 
 using Camera;
 using Camera.Foscam;
@@ -16,7 +16,7 @@ namespace TrackingCam.Plugins.Video
   [Export("Video", typeof(IVideo))]
   [ExportMetadata("Description", "Foscam IP Cameras")]
   [PartCreationPolicy(CreationPolicy.Shared)]
-  public class FoscamVideo : IVideo, IInitializable
+  public class FoscamVideoPlugin : IVideo, IInitializable
   {
 
     #region --- Constants ---
@@ -38,7 +38,7 @@ namespace TrackingCam.Plugins.Video
 
     #region --- Initialization ---
 
-    public FoscamVideo()
+    public FoscamVideoPlugin()
     {
     }
 
@@ -68,7 +68,7 @@ namespace TrackingCam.Plugins.Video
       if (!settings.TryGetValue(VideoSettings.SETTING_CAMERA_PASSWORD, out password))
         username = DEFAULT_PASSWORD;
 
-      _video = Camera.Foscam.FoscamVideo.CreateFoscamVideoController(cameraType, url, username, password);
+      _video = FoscamVideo.CreateFoscamVideoController(cameraType, url, username, password);
     }
 
     #endregion
