@@ -73,6 +73,8 @@ namespace TrackingCam.Plugins.PTZ
 
       _motion = FoscamMotion.CreateFoscamMotionController(cameraType, url, username, password);
       _zoom = FoscamZoom.CreateFoscamZoomController(cameraType, url, username, password);
+
+      ZoomLevel = 0; //unzoom
     }
 
     #endregion
@@ -88,7 +90,8 @@ namespace TrackingCam.Plugins.PTZ
 
       set
       {
-        throw new NotImplementedException();
+        //TODO: go to nearest horizontal,vertical preset point (and then set _panAngle to its real value). Maybe need some param with the preset point names given in horizontalAngle:verticalAngle string format
+        _panAngle = value;
       }
     }
 
@@ -101,7 +104,8 @@ namespace TrackingCam.Plugins.PTZ
 
       set
       {
-        throw new NotImplementedException();
+        //TODO: go to nearest horizontal,vertical preset point (and then set _tiltAngle to its real value). Maybe need some param with the preset point names given in horizontalAngle:verticalAngle string format
+        _tiltAngle = value;
       }
     }
 
@@ -114,7 +118,12 @@ namespace TrackingCam.Plugins.PTZ
 
       set
       {
-        throw new NotImplementedException();
+        if (value == 0)
+          _zoom.ZoomOut();
+        else
+          _zoom.ZoomIn();
+
+        _zoomLevel = value;
       }
     }
 

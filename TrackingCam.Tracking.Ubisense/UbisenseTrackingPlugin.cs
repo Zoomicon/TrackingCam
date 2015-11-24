@@ -1,7 +1,8 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: UbisenseTrackingPlugin.cs
-//Version: 20151124
+//Version: 20151125
 
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 
@@ -22,6 +23,7 @@ namespace TrackingCam.Plugins.Tracking
 
     protected UbisensePositioning _positioning; //=null
     protected string _key; //=null
+    protected double _distance; //=0
 
     #endregion
 
@@ -33,7 +35,13 @@ namespace TrackingCam.Plugins.Tracking
 
     public void Initialize(Dictionary<string, string> settings) //throws Exception
     {
+      string distanceStr;
+      settings.TryGetValue(TrackingSettings.SETTING_TRACKING_DISTANCE, out distanceStr);
+      if (!double.TryParse(distanceStr, out _distance))
+        _distance = 0; //will use Z value from ubisence as distance at PositionAngle calculation
+
       settings.TryGetValue(TrackingSettings.SETTING_TRACKING_OBJECT_KEY, out _key);
+
       InitializeAsync();
     }
 
@@ -72,6 +80,14 @@ namespace TrackingCam.Plugins.Tracking
       {
         Position? pos = _positioning.GetPosition();
         return (pos.HasValue) ? pos.Value.P.Z : 0;
+      }
+    }
+
+    public double PositionAngle
+    {
+      get
+      {
+        return Math.Atan2(PositionHorizontal, (_distance != 0) ? _distance : PositionDepth); //if a distance hasn't been set, assume the camera is placed at the start of the ubisense area (assuming it is set to z=0), in the middle of it (assuming it is set to x=0)
       }
     }
 

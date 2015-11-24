@@ -1,6 +1,6 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: ITracker.cs
-//Version: 20151116
+//Version: 20151124
 
 namespace TrackingCam.Plugins.Tracking
 {
@@ -13,6 +13,8 @@ namespace TrackingCam.Plugins.Tracking
     double PositionDepth { get; }
     double PositionHorizontal { get; }
     double PositionVertical { get; }
+
+    double PositionAngle { get; }
 
     #endregion
   }
