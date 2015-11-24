@@ -1,3 +1,8 @@
+TrackingCam
+http://TrackingCam.codeplex.com
+
+Description:
+-------------
 TrackingCam is an application featuring:
  - Video input and display
  - Position tracking (for speaker)
@@ -5,7 +10,7 @@ TrackingCam is an application featuring:
  - Digital video zoom (onto speaker)
 
 Technologies:
-
+--------------
 * Video input and display
 * Camera PTZ control
  - Foscam MJPEG & HD (H.264/RTSP) IP Cameras - http://FoscamController.codeplex.com
