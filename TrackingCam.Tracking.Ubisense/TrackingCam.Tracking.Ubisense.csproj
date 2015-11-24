@@ -34,19 +34,20 @@
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="UbisenseLocationServices, Version=2.1.9.2633, Culture=neutral, PublicKeyToken=bf00ae4f6f53f646, processorArchitecture=MSIL">
-      <HintPath>..\packages\UbisensePositioning.1.0.0\lib\net40\UbisenseLocationServices.dll</HintPath>
+      <HintPath>..\packages\UbisensePositioning.1.1.0\lib\net20\UbisenseLocationServices.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="UbisensePlatform, Version=2.1.9.2633, Culture=neutral, PublicKeyToken=bf00ae4f6f53f646, processorArchitecture=MSIL">
-      <HintPath>..\packages\UbisensePositioning.1.0.0\lib\net40\UbisensePlatform.dll</HintPath>
+      <HintPath>..\packages\UbisensePositioning.1.1.0\lib\net20\UbisensePlatform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="UbisensePositioning, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UbisensePositioning.1.0.0\lib\net40\UbisensePositioning.dll</HintPath>
+      <HintPath>..\packages\UbisensePositioning.1.1.0\lib\net20\UbisensePositioning.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UbisenseTrackingPlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

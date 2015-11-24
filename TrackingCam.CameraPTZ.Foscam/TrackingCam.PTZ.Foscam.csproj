@@ -7,8 +7,8 @@
     <ProjectGuid>{C75D40D9-3CAF-48B8-A53A-A078B510B4C3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TrackingCam.CameraPTZ.Foscam</RootNamespace>
-    <AssemblyName>TrackingCam.CameraPTZ.Foscam</AssemblyName>
+    <RootNamespace>TrackingCam.PTZ.Foscam</RootNamespace>
+    <AssemblyName>TrackingCam.PTZ.Foscam</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -38,31 +38,16 @@
       <HintPath>..\packages\FoscamController.1.1.0\lib\net45\FoscamCameraControllers.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="FoscamHDCameraController, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FoscamController.1.1.0\lib\net45\FoscamHDCameraController.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="FoscamMJPEGCameraController, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FoscamController.1.1.0\lib\net45\FoscamMJPEGCameraController.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="MimeMultiPart, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FoscamController.1.1.0\lib\net45\MimeMultiPart.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
-    <Reference Include="UpdatingImage, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FoscamController.1.1.0\lib\net45\UpdatingImage.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="xZune.Vlc, Version=15.10.25.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\xZune.Vlc.15.10.25\lib\net45\xZune.Vlc.dll</HintPath>
+      <HintPath>..\packages\xZune.Vlc.15.11.24\lib\net45\xZune.Vlc.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FoscamPTZPlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

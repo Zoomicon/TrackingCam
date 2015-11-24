@@ -37,9 +37,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Plugins.cs" />
-    <Compile Include="ICameraPTZ.cs" />
+    <Compile Include="IPTZ.cs" />
     <Compile Include="ITracker.cs" />
     <Compile Include="IInitializable.cs" />
+    <Compile Include="TrackingSettings.cs" />
+    <Compile Include="PTZSettings.cs" />
     <Compile Include="VideoSettings.cs" />
     <Compile Include="IVideo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

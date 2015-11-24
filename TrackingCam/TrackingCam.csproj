@@ -33,6 +33,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>TrackingCam.App</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -58,6 +61,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="MainWindow.Plugins.cs" />
+    <Compile Include="MainWindow.PTZ.cs" />
+    <Compile Include="MainWindow.Tracking.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -92,9 +97,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TrackingCam.CameraPTZ.Foscam\TrackingCam.CameraPTZ.Foscam.csproj">
+    <ProjectReference Include="..\TrackingCam.CameraPTZ.Foscam\TrackingCam.PTZ.Foscam.csproj">
       <Project>{c75d40d9-3caf-48b8-a53a-a078b510b4c3}</Project>
-      <Name>TrackingCam.CameraPTZ.Foscam</Name>
+      <Name>TrackingCam.PTZ.Foscam</Name>
     </ProjectReference>
     <ProjectReference Include="..\TrackingCam.Plugins\TrackingCam.Plugins.csproj">
       <Project>{dfdfd459-83a0-4277-9698-3e37e5f25e69}</Project>

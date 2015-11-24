@@ -1,5 +1,5 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
-//File: FoscamVideoPlugin.cs
+//File: FoscamPTZPlugin.cs
 //Version: 20151124
 
 using Camera;
@@ -8,16 +8,15 @@ using Camera.Foscam;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
-using System.Windows;
 
-namespace TrackingCam.Plugins.Video
+namespace TrackingCam.Plugins.PTZ
 {
   //MEF
-  [Export("Video", typeof(IVideo))]
-  [Export("Video.Foscam", typeof(IVideo))]
-  [ExportMetadata("Description", "Foscam IP Camera Video")]
+  [Export("PTZ", typeof(IPTZ))]
+  [Export("PTZ.Foscam", typeof(IPTZ))]
+  [ExportMetadata("Description", "Foscam IP Camera PTZ")]
   [PartCreationPolicy(CreationPolicy.Shared)]
-  public class FoscamVideoPlugin : IVideo, IInitializable
+  public class FoscamPTZPlugin : IPTZ, IInitializable
   {
 
     #region --- Constants ---
@@ -33,13 +32,16 @@ namespace TrackingCam.Plugins.Video
 
     #region --- Fields ---
 
-    protected IVideoController _video;
+    protected IMotionController _motion;
+    protected IZoomController _zoom;
+    protected double _panAngle, _tiltAngle;
+    protected double _zoomLevel = 1.0;
 
     #endregion
 
     #region --- Initialization ---
 
-    public FoscamVideoPlugin()
+    public FoscamPTZPlugin()
     {
     }
 
@@ -47,7 +49,7 @@ namespace TrackingCam.Plugins.Video
     {
       FoscamCameraType cameraType;
       string _cameraType;
-      if (!settings.TryGetValue(VideoSettings.SETTING_CAMERA_TYPE, out _cameraType))
+      if (!settings.TryGetValue(PTZSettings.SETTING_CAMERA_TYPE, out _cameraType))
         cameraType = DEFAULT_CAMERA_TYPE;
       else
         if (string.Equals(_cameraType, SETTING_CAMERA_FOSCAM_HD, StringComparison.OrdinalIgnoreCase))
@@ -55,60 +57,69 @@ namespace TrackingCam.Plugins.Video
       else if (string.Equals(_cameraType, SETTING_CAMERA_FOSCAM_MJPEG, StringComparison.OrdinalIgnoreCase))
         cameraType = FoscamCameraType.FoscamMJPEG;
       else
-        throw new ArgumentNullException(VideoSettings.SETTING_CAMERA_TYPE);
+        throw new ArgumentNullException(PTZSettings.SETTING_CAMERA_TYPE);
 
       string url;
-      if (!settings.TryGetValue(VideoSettings.SETTING_CAMERA_URL, out url))
-        throw new ArgumentNullException(VideoSettings.SETTING_CAMERA_URL);
+      if (!settings.TryGetValue(PTZSettings.SETTING_CAMERA_URL, out url))
+        throw new ArgumentNullException(PTZSettings.SETTING_CAMERA_URL);
 
       string username;
-      if (!settings.TryGetValue(VideoSettings.SETTING_CAMERA_USERNAME, out username))
+      if (!settings.TryGetValue(PTZSettings.SETTING_CAMERA_USERNAME, out username))
         username = DEFAULT_USERNAME;
 
       string password;
-      if (!settings.TryGetValue(VideoSettings.SETTING_CAMERA_PASSWORD, out password))
+      if (!settings.TryGetValue(PTZSettings.SETTING_CAMERA_PASSWORD, out password))
         username = DEFAULT_PASSWORD;
 
-      _video = FoscamVideo.CreateFoscamVideoController(cameraType, url, username, password);
+      _motion = FoscamMotion.CreateFoscamMotionController(cameraType, url, username, password);
+      _zoom = FoscamZoom.CreateFoscamZoomController(cameraType, url, username, password);
     }
 
     #endregion
 
     #region --- Properties ---
 
-    public bool Paused
+    public double PanAngle
     {
       get
+      {
+        return _panAngle;
+      }
+
+      set
       {
         throw new NotImplementedException();
       }
     }
 
-    public UIElement Display
+    public double TiltAngle
     {
       get
       {
-        return (_video != null) ? _video.VideoDisplay : null;
+        return _tiltAngle;
+      }
+
+      set
+      {
+        throw new NotImplementedException();
+      }
+    }
+
+    public double ZoomLevel
+    {
+      get
+      {
+        return _zoomLevel;
+      }
+
+      set
+      {
+        throw new NotImplementedException();
       }
     }
 
     #endregion
 
-    #region --- Methods ---
-
-    public void Start()
-    {
-      if (_video != null)
-        _video.StartVideo();
-    }
-
-    public void Stop()
-    {
-      if (_video != null)
-        _video.StopVideo();
-    }
-
-    #endregion
   }
 
 }

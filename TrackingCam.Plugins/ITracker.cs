@@ -10,9 +10,9 @@ namespace TrackingCam.Plugins.Tracking
 
     #region --- Properties ---
 
+    double PositionDepth { get; }
     double PositionHorizontal { get; }
     double PositionVertical { get; }
-    double PositionDepth { get; }
 
     #endregion
   }

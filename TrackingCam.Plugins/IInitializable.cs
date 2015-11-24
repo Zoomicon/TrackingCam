@@ -1,10 +1,10 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: IInitializable.cs
-//Version: 20151116
+//Version: 20151124
 
 using System.Collections.Generic;
 
-namespace TrackingCam.Plugins.Video
+namespace TrackingCam.Plugins
 {
 
   public interface IInitializable

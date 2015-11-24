@@ -1,6 +1,6 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
-//File: KinectV1Video.cs
-//Version: 20151123
+//File: KinectV1VideoPlugin.cs
+//Version: 20151124
 
 //TODO: maybe extend IDisposable
 
@@ -17,6 +17,7 @@ namespace TrackingCam.Plugins.Video
 {
   //MEF
   [Export("Video", typeof(IVideo))]
+  [Export("Video.KinectV1", typeof(IVideo))]
   [ExportMetadata("Description", "Kinect v1")]
   [PartCreationPolicy(CreationPolicy.Shared)]
   public class KinectV1VideoPlugin : IVideo

@@ -1,11 +1,11 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
-//File: VideoSettings.cs
+//File: PTZSettings.cs
 //Version: 20151124
 
-namespace TrackingCam.Plugins.Video
+namespace TrackingCam.Plugins.PTZ
 {
 
-  public static class VideoSettings
+  public static class PTZSettings
   {
 
     #region --- Constants ---

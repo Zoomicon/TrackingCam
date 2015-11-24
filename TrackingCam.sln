@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackingCam.Plugins", "TrackingCam.Plugins\TrackingCam.Plugins.csproj", "{DFDFD459-83A0-4277-9698-3E37E5F25E69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackingCam.CameraPTZ.Foscam", "TrackingCam.CameraPTZ.Foscam\TrackingCam.CameraPTZ.Foscam.csproj", "{C75D40D9-3CAF-48B8-A53A-A078B510B4C3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackingCam.PTZ.Foscam", "TrackingCam.CameraPTZ.Foscam\TrackingCam.PTZ.Foscam.csproj", "{C75D40D9-3CAF-48B8-A53A-A078B510B4C3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackingCam.Tracking.KinectAudio", "TrackingCam.Tracking.KinectAudio\TrackingCam.Tracking.KinectAudio.csproj", "{04142E1D-8307-4508-9AD8-FF02608B1C1C}"
 EndProject
