@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="Camera_Type" Type="System.String" Scope="User">
-      <Value Profile="(Default)">HD</Value>
+      <Value Profile="(Default)">FoscamHD</Value>
     </Setting>
     <Setting Name="Camera_Url" Type="System.String" Scope="User">
       <Value Profile="(Default)">http://somewhere:88</Value>

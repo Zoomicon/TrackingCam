@@ -25,7 +25,7 @@ namespace TrackingCam.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("HD")]
+        [global::System.Configuration.DefaultSettingValueAttribute("FoscamHD")]
         public string Camera_Type {
             get {
                 return ((string)(this["Camera_Type"]));
