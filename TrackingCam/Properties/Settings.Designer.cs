@@ -46,5 +46,53 @@ namespace TrackingCam.Properties {
                 this["Camera_Url"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Camera_Username {
+            get {
+                return ((string)(this["Camera_Username"]));
+            }
+            set {
+                this["Camera_Username"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Camera_Password {
+            get {
+                return ((string)(this["Camera_Password"]));
+            }
+            set {
+                this["Camera_Password"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Tracking_Distance {
+            get {
+                return ((double)(this["Tracking_Distance"]));
+            }
+            set {
+                this["Tracking_Distance"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Tracking_ObjectKey {
+            get {
+                return ((string)(this["Tracking_ObjectKey"]));
+            }
+            set {
+                this["Tracking_ObjectKey"] = value;
+            }
+        }
     }
 }
