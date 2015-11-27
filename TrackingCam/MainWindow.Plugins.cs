@@ -1,6 +1,6 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: MainWindow.Plugins.cs
-//Version: 20151124
+//Version: 20151127
 
 using System.Windows;
 
@@ -13,7 +13,7 @@ namespace TrackingCam
 
     public void LoadPlugins()
     {
-      LoadVideoPlugin();
+      LoadVideoPlugins();
       LoadPTZPlugin();
       LoadTrackingPlugin();
     }

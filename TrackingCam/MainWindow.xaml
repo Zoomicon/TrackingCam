@@ -1,7 +1,7 @@
 ﻿<!--
 Project: TrackingCam (http://TrackingCam.codeplex.com)
 File: MainWindow.xaml
-Version: 20151117
+Version: 20151127
 -->
 
 <Window
@@ -18,7 +18,14 @@ Version: 20151117
   Loaded="Window_Loaded"
   >
 
-  <Grid x:Name="LayoutRoot">
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="2*" />
+      <RowDefinition />
+    </Grid.RowDefinitions>
 
+    <Grid x:Name="ZoomVideoArea" Grid.Row="0" />
+    <Grid x:Name="TrackerVideoArea" Grid.Row="1" />
   </Grid>
+
 </Window>

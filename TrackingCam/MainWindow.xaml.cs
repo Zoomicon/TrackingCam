@@ -1,9 +1,11 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: MainWindow.xaml.cs
-//Version: 20151126
+//Version: 20151127
 
 using System.Windows;
+using System.Windows.Controls;
 using TrackingCam.Plugins;
+using TrackingCam.Plugins.Video;
 
 namespace TrackingCam
 {
@@ -26,14 +28,14 @@ namespace TrackingCam
 
     #region --- Methods ---
 
-    public void AddVideo()
+    public void AddVideo(IVideo video, Grid container)
     {
       if (video == null) return;
 
       UIElement display = video.Display;
       if (display != null)
       {
-        LayoutRoot.Children.Add(video.Display);
+        container.Children.Add(display);
         video.Start();
       }
     }
@@ -44,7 +46,8 @@ namespace TrackingCam
 
     private void Window_Loaded(object sender, RoutedEventArgs e)
     {
-      AddVideo();
+      AddVideo(videoFoscam, ZoomVideoArea);
+      AddVideo(videoKinect, TrackerVideoArea);
     }
 
     #endregion

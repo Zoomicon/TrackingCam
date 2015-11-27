@@ -18,17 +18,35 @@ namespace TrackingCam
 
     #region --- Fields ---
 
-    protected IVideo video;
+    protected IVideo videoKinect;
+    protected IVideo videoFoscam;
 
     #endregion
 
     #region --- Methods ---
 
-    public void LoadVideoPlugin()
+    public IVideo LoadVideoPlugin(string protocol)
     {
-      Lazy<IVideo> plugin = PluginsCatalog.mefContainer.GetExports<IVideo>("Video").FirstOrDefault(); //TODO: change this to select from app settings which video plugin to use instead of just using the 1st one found
-      video = plugin.Value;
+      Lazy<IVideo> plugin = PluginsCatalog.mefContainer.GetExports<IVideo>(protocol).FirstOrDefault(); //TODO: change this to select from app settings which video plugin to use instead of just using the 1st one found
+      IVideo video = plugin.Value;
       (video as IInitializable)?.Initialize(Settings.Default);
+      return video;
+    }
+
+    public void LoadKinectVideoPlugin()
+    {
+      videoKinect = LoadVideoPlugin("Video.KinectV1");
+    }
+
+    public void LoadFoscamVideoPlugin()
+    {
+      videoFoscam = LoadVideoPlugin("Video.Foscam");
+    }
+
+    public void LoadVideoPlugins()
+    {
+      LoadKinectVideoPlugin();
+      LoadFoscamVideoPlugin();
     }
 
     #endregion
