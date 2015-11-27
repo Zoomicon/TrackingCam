@@ -1,13 +1,13 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: FoscamPTZPlugin.cs
-//Version: 20151124
+//Version: 20151127
 
 using Camera;
 using Camera.Foscam;
 
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.Composition;
+using System.Configuration;
 
 namespace TrackingCam.Plugins.PTZ
 {
@@ -45,11 +45,12 @@ namespace TrackingCam.Plugins.PTZ
     {
     }
 
-    public void Initialize(Dictionary<string, string> settings) //throws Exception
+    public void Initialize(SettingsBase settings) //throws Exception
     {
+      //Get the Foscam camera type (MJPEG or HD)
       FoscamCameraType cameraType;
-      string _cameraType;
-      if (!settings.TryGetValue(PTZSettings.SETTING_CAMERA_TYPE, out _cameraType))
+      string _cameraType = (string)settings[PTZSettings.SETTING_CAMERA_TYPE];
+      if (_cameraType == null || _cameraType == "")
         cameraType = DEFAULT_CAMERA_TYPE;
       else
         if (string.Equals(_cameraType, SETTING_CAMERA_FOSCAM_HD, StringComparison.OrdinalIgnoreCase))
@@ -59,22 +60,23 @@ namespace TrackingCam.Plugins.PTZ
       else
         throw new ArgumentNullException(PTZSettings.SETTING_CAMERA_TYPE);
 
-      string url;
-      if (!settings.TryGetValue(PTZSettings.SETTING_CAMERA_URL, out url))
+      //Get the camera URL
+      string url = (string)settings[PTZSettings.SETTING_CAMERA_URL];
+      if (url == null || url == "")
         throw new ArgumentNullException(PTZSettings.SETTING_CAMERA_URL);
 
-      string username;
-      if (!settings.TryGetValue(PTZSettings.SETTING_CAMERA_USERNAME, out username))
-        username = DEFAULT_USERNAME;
+      //Get the username
+      string username = (string)settings[PTZSettings.SETTING_CAMERA_USERNAME] ?? DEFAULT_USERNAME;
 
-      string password;
-      if (!settings.TryGetValue(PTZSettings.SETTING_CAMERA_PASSWORD, out password))
-        username = DEFAULT_PASSWORD;
+      //Get the password
+      string password = (string)settings[PTZSettings.SETTING_CAMERA_PASSWORD] ?? DEFAULT_PASSWORD;
 
+      //Create motion and zoom controllers
       _motion = FoscamMotion.CreateFoscamMotionController(cameraType, url, username, password);
       _zoom = FoscamZoom.CreateFoscamZoomController(cameraType, url, username, password);
 
-      ZoomLevel = 0; //unzoom
+      //Unzoom
+      ZoomLevel = 0;
     }
 
     #endregion

@@ -1,6 +1,6 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: MainWindow.xaml.cs
-//Version: 20151117
+//Version: 20151126
 
 using System.Windows;
 using TrackingCam.Plugins;
@@ -28,12 +28,12 @@ namespace TrackingCam
 
     public void AddVideo()
     {
-      if (video != null)
-      {
-        UIElement display = video.Display;
-        if (display != null)
-          LayoutRoot.Children.Add(video.Display);
+      if (video == null) return;
 
+      UIElement display = video.Display;
+      if (display != null)
+      {
+        LayoutRoot.Children.Add(video.Display);
         video.Start();
       }
     }

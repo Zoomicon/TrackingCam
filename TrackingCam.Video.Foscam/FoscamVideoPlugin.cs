@@ -1,13 +1,13 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: FoscamVideoPlugin.cs
-//Version: 20151124
+//Version: 20151127
 
 using Camera;
 using Camera.Foscam;
 
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.Composition;
+using System.Configuration;
 using System.Windows;
 
 namespace TrackingCam.Plugins.Video
@@ -43,32 +43,33 @@ namespace TrackingCam.Plugins.Video
     {
     }
 
-    public void Initialize(Dictionary<string, string> settings) //throws Exception
+    public void Initialize(SettingsBase settings) //throws Exception
     {
+      //Get the Foscam camera type (MJPEG or HD)
       FoscamCameraType cameraType;
-      string _cameraType;
-      if (!settings.TryGetValue(VideoSettings.SETTING_CAMERA_TYPE, out _cameraType))
+      string cameraTypeStr = (string)settings[VideoSettings.SETTING_CAMERA_TYPE];
+      if (cameraTypeStr == null || cameraTypeStr == "")
         cameraType = DEFAULT_CAMERA_TYPE;
       else
-        if (string.Equals(_cameraType, SETTING_CAMERA_FOSCAM_HD, StringComparison.OrdinalIgnoreCase))
+        if (string.Equals(cameraTypeStr, SETTING_CAMERA_FOSCAM_HD, StringComparison.OrdinalIgnoreCase))
         cameraType = FoscamCameraType.FoscamHD;
-      else if (string.Equals(_cameraType, SETTING_CAMERA_FOSCAM_MJPEG, StringComparison.OrdinalIgnoreCase))
+      else if (string.Equals(cameraTypeStr, SETTING_CAMERA_FOSCAM_MJPEG, StringComparison.OrdinalIgnoreCase))
         cameraType = FoscamCameraType.FoscamMJPEG;
       else
         throw new ArgumentNullException(VideoSettings.SETTING_CAMERA_TYPE);
 
-      string url;
-      if (!settings.TryGetValue(VideoSettings.SETTING_CAMERA_URL, out url))
+      //Get the camera URL
+      string url = (string)settings[VideoSettings.SETTING_CAMERA_URL];
+      if (url == null || url == "")
         throw new ArgumentNullException(VideoSettings.SETTING_CAMERA_URL);
 
-      string username;
-      if (!settings.TryGetValue(VideoSettings.SETTING_CAMERA_USERNAME, out username))
-        username = DEFAULT_USERNAME;
+      //Get the username
+      string username = (string)settings[VideoSettings.SETTING_CAMERA_USERNAME] ?? DEFAULT_USERNAME;
 
-      string password;
-      if (!settings.TryGetValue(VideoSettings.SETTING_CAMERA_PASSWORD, out password))
-        username = DEFAULT_PASSWORD;
+      //Get the password
+      string password = (string)settings[VideoSettings.SETTING_CAMERA_PASSWORD] ?? DEFAULT_PASSWORD;
 
+      //Create video controller
       _video = FoscamVideo.CreateFoscamVideoController(cameraType, url, username, password);
     }
 

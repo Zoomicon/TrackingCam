@@ -1,11 +1,12 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: KinectAudioTrackingPlugin.cs
-//Version: 20151125
+//Version: 20151127
 
 using KinectAudioPositioning;
+
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.Composition;
+using System.Configuration;
 
 namespace TrackingCam.Plugins.Tracking
 {
@@ -36,12 +37,10 @@ namespace TrackingCam.Plugins.Tracking
     {
     }
 
-    public void Initialize(Dictionary<string, string> settings) //throws Exception
+    public void Initialize(SettingsBase settings) //throws Exception
     {
-      string distanceStr;
-      settings.TryGetValue(TrackingSettings.SETTING_TRACKING_DISTANCE, out distanceStr);
-      if (!double.TryParse(distanceStr, out _distance))
-        _distance = DEFAULT_DISTANCE;
+      _distance = (double?)settings[TrackingSettings.SETTING_TRACKING_DISTANCE] ?? DEFAULT_DISTANCE;
+
       _positioning = new KinectMicArray();
     }
 

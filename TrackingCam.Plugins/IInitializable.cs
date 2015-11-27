@@ -1,8 +1,8 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: IInitializable.cs
-//Version: 20151124
+//Version: 20151127
 
-using System.Collections.Generic;
+using System.Configuration;
 
 namespace TrackingCam.Plugins
 {
@@ -12,7 +12,7 @@ namespace TrackingCam.Plugins
 
     #region --- Methods ---
 
-    void Initialize(Dictionary<string, string> settings); //throws Exception
+    void Initialize(SettingsBase settings); //throws Exception
 
     #endregion
   }

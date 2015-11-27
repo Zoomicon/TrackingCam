@@ -1,10 +1,11 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: UbisenseTrackingPlugin.cs
-//Version: 20151125
+//Version: 20151127
 
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
+using System.Configuration;
 
 using Ubisense.Positioning;
 using Ubisense.UBase;
@@ -33,14 +34,11 @@ namespace TrackingCam.Plugins.Tracking
     {
     }
 
-    public void Initialize(Dictionary<string, string> settings) //throws Exception
+    public void Initialize(SettingsBase settings) //throws Exception
     {
-      string distanceStr;
-      settings.TryGetValue(TrackingSettings.SETTING_TRACKING_DISTANCE, out distanceStr);
-      if (!double.TryParse(distanceStr, out _distance))
-        _distance = 0; //will use Z value from ubisence as distance at PositionAngle calculation
+      _distance = (double?)settings[TrackingSettings.SETTING_TRACKING_DISTANCE] ?? 0; //if set to 0, will use Z value from ubisence as distance at PositionAngle calculation
 
-      settings.TryGetValue(TrackingSettings.SETTING_TRACKING_OBJECT_KEY, out _key);
+      _key = (string)settings[TrackingSettings.SETTING_TRACKING_OBJECT_KEY];
 
       InitializeAsync();
     }
