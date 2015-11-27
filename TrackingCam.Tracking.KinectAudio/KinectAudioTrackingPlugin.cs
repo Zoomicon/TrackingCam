@@ -27,7 +27,7 @@ namespace TrackingCam.Plugins.Tracking
     #region --- Fields ---
 
     protected KinectMicArray _positioning; //=null
-    protected double _distance;
+    protected double _distance = DEFAULT_DISTANCE;
 
     #endregion
 

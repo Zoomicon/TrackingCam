@@ -20,11 +20,17 @@ namespace TrackingCam.Plugins.Tracking
   public class UbisenseTrackingPlugin : ITracker, IInitializable
   {
 
+    #region --- Constants ---
+
+    public const double DEFAULT_DISTANCE = 0; //if set to 0, will use Z value from ubisence as distance at PositionAngle calculation
+
+    #endregion
+
     #region --- Fields ---
 
     protected UbisensePositioning _positioning; //=null
     protected string _key; //=null
-    protected double _distance; //=0
+    protected double _distance = DEFAULT_DISTANCE;
 
     #endregion
 
@@ -36,7 +42,7 @@ namespace TrackingCam.Plugins.Tracking
 
     public void Initialize(SettingsBase settings) //throws Exception
     {
-      _distance = (double?)settings[TrackingSettings.SETTING_TRACKING_DISTANCE] ?? 0; //if set to 0, will use Z value from ubisence as distance at PositionAngle calculation
+      _distance = (double?)settings[TrackingSettings.SETTING_TRACKING_DISTANCE] ?? DEFAULT_DISTANCE;
 
       _key = (string)settings[TrackingSettings.SETTING_TRACKING_OBJECT_KEY];
 

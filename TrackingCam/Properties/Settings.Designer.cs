@@ -94,5 +94,29 @@ namespace TrackingCam.Properties {
                 this["Tracking_ObjectKey"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public double Pan_Angle_Step {
+            get {
+                return ((double)(this["Pan_Angle_Step"]));
+            }
+            set {
+                this["Pan_Angle_Step"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("90")]
+        public double Tilt_Angle_Step {
+            get {
+                return ((double)(this["Tilt_Angle_Step"]));
+            }
+            set {
+                this["Tilt_Angle_Step"] = value;
+            }
+        }
     }
 }
