@@ -3,10 +3,10 @@
   <Profiles />
   <Settings>
     <Setting Name="Camera_Type" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">HD</Value>
     </Setting>
     <Setting Name="Camera_Url" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">http://somewhere:88</Value>
     </Setting>
     <Setting Name="Camera_Username" Type="System.String" Scope="User">
       <Value Profile="(Default)" />

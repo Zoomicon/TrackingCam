@@ -25,7 +25,7 @@ namespace TrackingCam.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("HD")]
         public string Camera_Type {
             get {
                 return ((string)(this["Camera_Type"]));
@@ -37,7 +37,7 @@ namespace TrackingCam.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://somewhere:88")]
         public string Camera_Url {
             get {
                 return ((string)(this["Camera_Url"]));
