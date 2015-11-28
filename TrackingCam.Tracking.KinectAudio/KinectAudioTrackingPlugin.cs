@@ -1,12 +1,13 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: KinectAudioTrackingPlugin.cs
-//Version: 20151127
+//Version: 20151128
 
-using KinectAudioPositioning;
+using KinectAudioPositioning.WPF;
 
 using System;
 using System.ComponentModel.Composition;
 using System.Configuration;
+using System.Windows;
 
 namespace TrackingCam.Plugins.Tracking
 {
@@ -15,7 +16,7 @@ namespace TrackingCam.Plugins.Tracking
   [Export("Tracking.KinectAudio", typeof(ITracker))]
   [ExportMetadata("Description", "Kinect Audio Tracking")]
   [PartCreationPolicy(CreationPolicy.Shared)]
-  public class KinectAudioTrackingPlugin : ITracker, IInitializable
+  public class KinectAudioTrackingPlugin : ITracker, IInitializable, IDisplayable
   {
 
     #region --- Constants ---
@@ -26,7 +27,7 @@ namespace TrackingCam.Plugins.Tracking
 
     #region --- Fields ---
 
-    protected KinectMicArray _positioning; //=null
+    protected KinectAudioPositioningUI _positioning; //=null
     protected double _distance = DEFAULT_DISTANCE;
 
     #endregion
@@ -41,16 +42,20 @@ namespace TrackingCam.Plugins.Tracking
     {
       _distance = (double?)settings[TrackingSettings.SETTING_TRACKING_DISTANCE] ?? DEFAULT_DISTANCE;
 
-      _positioning = new KinectMicArray();
+      _positioning = new KinectAudioPositioningUI();
     }
 
     #endregion
 
     #region --- Properties ---
 
+    public UIElement Display {
+      get { return _positioning;  }
+    }
+
     public double PositionHorizontal
     {
-      get { return Math.Tan(_positioning.SourceAngle) * _distance; }
+      get { return Math.Tan(_positioning.KinectMicArray.SourceAngle) * _distance; }
     }
 
     public double PositionVertical
@@ -65,7 +70,7 @@ namespace TrackingCam.Plugins.Tracking
 
     public double PositionAngle
     {
-      get { return _positioning.SourceAngle;  }
+      get { return _positioning.KinectMicArray.SourceAngle;  }
     }
 
     #endregion

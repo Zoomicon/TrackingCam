@@ -1,18 +1,14 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: IVideo.cs
-//Version: 20151116
-
-using System.Windows;
+//Version: 20151128
 
 namespace TrackingCam.Plugins.Video
 {
 
-  public interface IVideo
+  public interface IVideo : IDisplayable
   {
 
     #region --- Properties ---
-
-    UIElement Display { get; }
 
     bool Paused { get; }
 

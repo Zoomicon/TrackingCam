@@ -1,7 +1,8 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: MainWindow.xaml.cs
-//Version: 20151127
+//Version: 20151128
 
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using TrackingCam.Plugins;
@@ -28,15 +29,22 @@ namespace TrackingCam
 
     #region --- Methods ---
 
-    public void AddVideo(IVideo video, Grid container)
+    public void AddDisplayable(IDisplayable displayable, Grid container)
     {
-      if (video == null) return;
+      if (displayable == null) return;
 
-      UIElement display = video.Display;
+      UIElement display = displayable.Display;
       if (display != null)
       {
         container.Children.Add(display);
-        video.Start();
+        try
+        {
+          (displayable as IVideo)?.Start();
+        }
+        catch (Exception e)
+        {
+          MessageBox.Show((e.InnerException ?? e).Message);
+        }
       }
     }
 
@@ -46,8 +54,9 @@ namespace TrackingCam
 
     private void Window_Loaded(object sender, RoutedEventArgs e)
     {
-      AddVideo(videoFoscam, ZoomVideoArea);
-      AddVideo(videoKinect, TrackerVideoArea);
+      AddDisplayable(videoFoscam, ZoomVideoArea);
+      AddDisplayable(videoKinect, TrackerVideoArea);
+      AddDisplayable(tracker as IDisplayable, TrackerInfoArea); //AddDisplayable will ignore the call if null (that is the tracker isn't an IDisplayable)
     }
 
     #endregion

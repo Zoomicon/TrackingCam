@@ -1,6 +1,6 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: MainWindow.Video.cs
-//Version: 20151127
+//Version: 20151128
 
 using System;
 using System.Linq;
@@ -29,7 +29,15 @@ namespace TrackingCam
     {
       Lazy<IVideo> plugin = PluginsCatalog.mefContainer.GetExports<IVideo>(protocol).FirstOrDefault(); //TODO: change this to select from app settings which video plugin to use instead of just using the 1st one found
       IVideo video = plugin.Value;
-      (video as IInitializable)?.Initialize(Settings.Default);
+      try
+      {
+        (video as IInitializable)?.Initialize(Settings.Default);
+      }
+      catch (Exception e)
+      {
+        video = null;
+        MessageBox.Show((e.InnerException ?? e).Message);
+      }
       return video;
     }
 

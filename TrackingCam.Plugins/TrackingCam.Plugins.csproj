@@ -36,6 +36,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IDisplayable.cs" />
     <Compile Include="Plugins.cs" />
     <Compile Include="IPTZ.cs" />
     <Compile Include="ITracker.cs" />
