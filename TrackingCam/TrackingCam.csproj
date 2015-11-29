@@ -37,21 +37,53 @@
     <StartupObject>TrackingCam.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Compatibility, Version=1.0.5811.1317, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Compatibility.1.0.3\lib\net40-client\Compatibility.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FloatingWindowZUI, Version=1.0.5811.8704, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZUI.1.0.5\lib\net40-client\FloatingWindowZUI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SilverFlow.Controls, Version=3.0.5811.12600, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZUI.1.0.5\lib\net40-client\SilverFlow.Controls.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Controls.Input.Toolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WPFToolkit.3.5.50211.1\lib\System.Windows.Controls.Input.Toolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Layout.Toolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WPFToolkit.3.5.50211.1\lib\System.Windows.Controls.Layout.Toolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WPFToolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WPFToolkit.3.5.50211.1\lib\WPFToolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=2.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.5\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="xZune.Vlc, Version=15.10.25.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\xZune.Vlc.15.10.25\lib\net45\xZune.Vlc.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="xZune.Vlc.Wpf, Version=15.10.25.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\xZune.Vlc.Wpf.15.11.24\lib\net45\xZune.Vlc.Wpf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ZoomAndPan, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZUI.1.0.5\lib\net40-client\ZoomAndPan.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>

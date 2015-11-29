@@ -2,6 +2,7 @@
 //File: MainWindow.xaml.cs
 //Version: 20151128
 
+using SilverFlow.Controls;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -29,14 +30,27 @@ namespace TrackingCam
 
     #region --- Methods ---
 
-    public void AddDisplayable(IDisplayable displayable, Grid container)
+    public void AddDisplay(UIElement display, string title="")
+    {
+      FloatingWindow window = new FloatingWindow()
+      {
+        Content = display,
+        Title = title,
+        IconText = title
+      };
+
+      host.Add(window);
+      window.Show(100, 100, true);
+    }
+
+    public void AddDisplayable(IDisplayable displayable, string title="")
     {
       if (displayable == null) return;
 
       UIElement display = displayable.Display;
       if (display != null)
       {
-        container.Children.Add(display);
+        AddDisplay(display, title);
         try
         {
           (displayable as IVideo)?.Start();
@@ -54,9 +68,9 @@ namespace TrackingCam
 
     private void Window_Loaded(object sender, RoutedEventArgs e)
     {
-      AddDisplayable(videoFoscam, ZoomVideoArea);
-      AddDisplayable(videoKinect, TrackerVideoArea);
-      AddDisplayable(tracker as IDisplayable, TrackerInfoArea); //AddDisplayable will ignore the call if null (that is the tracker isn't an IDisplayable)
+      AddDisplayable(videoFoscam, "Video - Foscam IP Camera");
+      AddDisplayable(videoKinect, "Video - Kinect Color Camera");
+      AddDisplayable(tracker as IDisplayable, "Tracking - Kinect Microphone Array"); //AddDisplayable will ignore the call if null (that is the tracker isn't an IDisplayable)
     }
 
     #endregion

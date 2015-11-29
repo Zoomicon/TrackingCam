@@ -1,7 +1,7 @@
 ﻿<!--
 Project: TrackingCam (http://TrackingCam.codeplex.com)
 File: MainWindow.xaml
-Version: 20151128
+Version: 20151130
 -->
 
 <Window
@@ -10,31 +10,45 @@ Version: 20151128
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:float="clr-namespace:FloatingWindowZUI;assembly=FloatingWindowZUI"
   mc:Ignorable="d"
 
   Width="525" Height="350"
-  Title="MainWindow"
+  Title="TrackingCam v1.0"
 
-  Loaded="Window_Loaded"
+  Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" WindowState="Maximized"
   >
 
+  <Window.Resources>
+    <!-- Host Background -->
+    <LinearGradientBrush x:Key="HostBackground" StartPoint="0.5,0" EndPoint="0.5,1">
+      <GradientStop Color="#FF00AEEF" Offset="0" />
+      <GradientStop Color="#FF89E0FF" Offset="1" />
+    </LinearGradientBrush>
+  </Window.Resources>
+
   <Grid>
-    <Grid.RowDefinitions>
-      <RowDefinition Height="2*" />
-      <RowDefinition />
-    </Grid.RowDefinitions>
 
-    <Grid Grid.Row="0">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition />
-        <ColumnDefinition />
-      </Grid.ColumnDefinitions>
+    <!-- Region Floating Window Host -->
 
-      <Grid x:Name="TrackerInfoArea" Grid.Column="0" />
-      <Grid x:Name="ZoomVideoArea" Grid.Column="1" />
-    </Grid>
+    <float:FloatingWindowHostZUI
+        x:Name="host" Grid.Column="2" MinWidth="100"
+        SnapinEnabled="{Binding ElementName=cbxEnableSnapin, Path=IsChecked}"
+        SnapinDistance="{Binding ElementName=txtSnapinDistance, Path=Text}"
+        SnapinMargin="{Binding ElementName=txtSnapinMargin, Path=Text}"
+        ShowMinimizedOnlyInIconbar="{Binding ElementName=cbxShowMinimized, Path=IsChecked}"
+        ContentScale="1.0"
+        MinContentScale="0.1"
+        MaxContentScale="3.0"
+        Background="{StaticResource HostBackground}"
+        >
+      <float:FloatingWindowHostZUI.Bar>
+        <TextBlock Text="Hellenic Open University, Zoomicon" VerticalAlignment="Center" />
+      </float:FloatingWindowHostZUI.Bar>
+    </float:FloatingWindowHostZUI>
 
-    <Grid x:Name="TrackerVideoArea" Grid.Row="1" />
+    <!-- End Region -->
+
   </Grid>
 
 </Window>
