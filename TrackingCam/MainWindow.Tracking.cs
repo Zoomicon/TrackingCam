@@ -1,6 +1,6 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: MainWindow.Tracking.cs
-//Version: 20151128
+//Version: 20151201
 
 using System;
 using System.Linq;
@@ -18,16 +18,17 @@ namespace TrackingCam
 
     #region --- Fields ---
 
-    protected ITracker tracker;
+    protected ITracker trackerKinectAudio;
+    protected ITracker trackerUbisense;
 
     #endregion
 
     #region --- Methods ---
 
-    public void LoadTrackingPlugin()
+    public ITracker LoadTrackingPlugin(string protocol)
     {
-      Lazy<ITracker> plugin = PluginsCatalog.mefContainer.GetExports<ITracker>("Tracking").FirstOrDefault(); //TODO: change this to select from app settings which tracking plugin to use instead of just using the 1st one found
-      tracker = plugin.Value;
+      Lazy<ITracker> plugin = PluginsCatalog.mefContainer.GetExports<ITracker>(protocol).FirstOrDefault(); //TODO: change this to select from app settings which tracking plugin to use instead of just using the 1st one found
+      ITracker tracker = plugin.Value;
       try
       {
         (tracker as IInitializable)?.Initialize(Settings.Default);
@@ -37,6 +38,23 @@ namespace TrackingCam
         tracker = null;
         MessageBox.Show((e.InnerException ?? e).Message);
       }
+      return tracker;
+    }
+
+    public void LoadKinectAudioTrackingPlugin()
+    {
+      trackerKinectAudio = LoadTrackingPlugin("Tracking.KinectAudio");
+    }
+
+    public void LoadUbisenseTrackingPlugin()
+    {
+      trackerUbisense = LoadTrackingPlugin("Tracking.Ubisense");
+    }
+
+    public void LoadTrackingPlugins()
+    {
+      LoadKinectAudioTrackingPlugin();
+      LoadUbisenseTrackingPlugin();
     }
 
     #endregion

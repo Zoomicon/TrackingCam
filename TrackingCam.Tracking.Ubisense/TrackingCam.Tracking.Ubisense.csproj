@@ -30,6 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
@@ -43,6 +45,10 @@
     </Reference>
     <Reference Include="UbisensePositioning, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\UbisensePositioning.1.1.0\lib\net20\UbisensePositioning.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="UbisensePositioning.WPF, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UbisensePositioning.WPF.1.2.0\lib\net40\UbisensePositioning.WPF.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>

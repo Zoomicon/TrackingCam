@@ -1,7 +1,7 @@
 ﻿<!--
 Project: TrackingCam (http://TrackingCam.codeplex.com)
 File: MainWindow.xaml
-Version: 20151130
+Version: 20151201
 -->
 
 <Window
@@ -14,9 +14,13 @@ Version: 20151130
   mc:Ignorable="d"
 
   Width="525" Height="350"
+  WindowStartupLocation="CenterScreen"
+  WindowState="Maximized"
+
   Title="TrackingCam v1.0"
 
-  Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" WindowState="Maximized"
+  Loaded="Window_Loaded"
+  Closing="Window_Closing"
   >
 
   <Window.Resources>
@@ -27,9 +31,14 @@ Version: 20151130
     </LinearGradientBrush>
   </Window.Resources>
 
-  <Grid>
+  <Grid x:Name="layout">
 
-    <!-- Region Floating Window Host -->
+    <!-- TODO: REMOVE TEMP FIX -->
+    <Viewbox Stretch="Uniform">
+      <Canvas x:Name="canvas" Width="1000" Height="750"/>
+    </Viewbox>
+
+    <!--
 
     <float:FloatingWindowHostZUI
         x:Name="host" Grid.Column="2" MinWidth="100"
@@ -47,7 +56,7 @@ Version: 20151130
       </float:FloatingWindowHostZUI.Bar>
     </float:FloatingWindowHostZUI>
 
-    <!-- End Region -->
+    -->
 
   </Grid>
 

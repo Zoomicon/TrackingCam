@@ -30,12 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="KinectAudioPositioning, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\KinectAudioPositioning.1.0.2\lib\net40-client\KinectAudioPositioning.dll</HintPath>
+    <Reference Include="KinectAudioPositioning, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\KinectAudioPositioning.1.0.4\lib\net40-client\KinectAudioPositioning.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="KinectAudioPositioning.WPF, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\KinectAudioPositioning.WPF.1.0.2\lib\net40-client\KinectAudioPositioning.WPF.dll</HintPath>
+    <Reference Include="KinectAudioPositioning.WPF, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\KinectAudioPositioning.WPF.1.0.4\lib\net40-client\KinectAudioPositioning.WPF.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="PresentationCore" />

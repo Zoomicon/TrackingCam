@@ -37,7 +37,7 @@ namespace TrackingCam.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://someAddress:somePort")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.241.14:88")]
         public string Camera_Url {
             get {
                 return ((string)(this["Camera_Url"]));
@@ -49,7 +49,7 @@ namespace TrackingCam.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("admin")]
+        [global::System.Configuration.DefaultSettingValueAttribute("admin1")]
         public string Camera_Username {
             get {
                 return ((string)(this["Camera_Username"]));
@@ -61,7 +61,7 @@ namespace TrackingCam.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("admin")]
+        [global::System.Configuration.DefaultSettingValueAttribute("admin1")]
         public string Camera_Password {
             get {
                 return ((string)(this["Camera_Password"]));

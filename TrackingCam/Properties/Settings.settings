@@ -6,13 +6,13 @@
       <Value Profile="(Default)">FoscamHD</Value>
     </Setting>
     <Setting Name="Camera_Url" Type="System.String" Scope="User">
-      <Value Profile="(Default)">http://someAddress:somePort</Value>
+      <Value Profile="(Default)">http://192.168.241.14:88</Value>
     </Setting>
     <Setting Name="Camera_Username" Type="System.String" Scope="User">
-      <Value Profile="(Default)">admin</Value>
+      <Value Profile="(Default)">admin1</Value>
     </Setting>
     <Setting Name="Camera_Password" Type="System.String" Scope="User">
-      <Value Profile="(Default)">admin</Value>
+      <Value Profile="(Default)">admin1</Value>
     </Setting>
     <Setting Name="Tracking_Distance" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>

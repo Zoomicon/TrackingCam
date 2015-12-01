@@ -1,13 +1,13 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: UbisenseTrackingPlugin.cs
-//Version: 20151127
+//Version: 20151201
 
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Configuration;
-
-using Ubisense.Positioning;
+using System.Windows;
+using Ubisense.Positioning.WPF;
 using Ubisense.UBase;
 
 namespace TrackingCam.Plugins.Tracking
@@ -17,7 +17,7 @@ namespace TrackingCam.Plugins.Tracking
   [Export("Tracking.Ubisense", typeof(ITracker))]
   [ExportMetadata("Description", "Ubisense Tracking")]
   [PartCreationPolicy(CreationPolicy.Shared)]
-  public class UbisenseTrackingPlugin : ITracker, IInitializable
+  public class UbisenseTrackingPlugin : ITracker, IInitializable, IDisplayable
   {
 
     #region --- Constants ---
@@ -28,7 +28,7 @@ namespace TrackingCam.Plugins.Tracking
 
     #region --- Fields ---
 
-    protected UbisensePositioning _positioning; //=null
+    protected UbisensePositioningUI _positioning; //=null
     protected string _key; //=null
     protected double _distance = DEFAULT_DISTANCE;
 
@@ -51,20 +51,25 @@ namespace TrackingCam.Plugins.Tracking
 
     private void InitializeAsync()
     {
-      _positioning = new UbisensePositioning();
-      _positioning.GetObjectsCompleted += UbisensePositioning_GetObjectsCompleted;
-      _positioning.GetObjectsAsync(); //getting objects may take some time
+      _positioning = new UbisensePositioningUI();
+      _positioning.Positioning.GetObjectsCompleted += UbisensePositioning_GetObjectsCompleted;
+      _positioning.Positioning.GetObjectsAsync(); //getting objects may take some time
     }
 
     #endregion
 
     #region --- Properties ---
 
+    public UIElement Display
+    {
+      get { return _positioning; }
+    }
+
     public double PositionHorizontal
     {
       get
       {
-        Position? pos = _positioning.GetPosition();
+        Position? pos = _positioning.Positioning.GetPosition();
         return (pos.HasValue) ? pos.Value.P.X : 0;
       }
     }
@@ -73,7 +78,7 @@ namespace TrackingCam.Plugins.Tracking
     {
       get
       {
-        Position? pos = _positioning.GetPosition();
+        Position? pos = _positioning.Positioning.GetPosition();
         return (pos.HasValue) ? pos.Value.P.Y : 0;
       }
     }
@@ -82,7 +87,7 @@ namespace TrackingCam.Plugins.Tracking
     {
       get
       {
-        Position? pos = _positioning.GetPosition();
+        Position? pos = _positioning.Positioning.GetPosition();
         return (pos.HasValue) ? pos.Value.P.Z : 0;
       }
     }
@@ -103,7 +108,7 @@ namespace TrackingCam.Plugins.Tracking
     {
       foreach (var o in objects)
         if (o.Key == _key)
-          _positioning.SelectedObject = o.Value;
+          _positioning.Positioning.SelectedObject = o.Value;
     }
 
     #endregion

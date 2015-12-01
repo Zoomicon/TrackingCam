@@ -1,6 +1,6 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: FoscamPTZPlugin.cs
-//Version: 20151127
+//Version: 20151201
 
 using Camera;
 using Camera.Foscam;
@@ -8,6 +8,7 @@ using Camera.Foscam;
 using System;
 using System.ComponentModel.Composition;
 using System.Configuration;
+using System.Windows;
 
 namespace TrackingCam.Plugins.PTZ
 {
@@ -16,7 +17,7 @@ namespace TrackingCam.Plugins.PTZ
   [Export("PTZ.Foscam", typeof(IPTZ))]
   [ExportMetadata("Description", "Foscam IP Camera PTZ")]
   [PartCreationPolicy(CreationPolicy.Shared)]
-  public class FoscamPTZPlugin : IPTZ, IInitializable
+  public class FoscamPTZPlugin : IPTZ, IInitializable, IDisplayable
   {
 
     #region --- Constants ---
@@ -34,6 +35,8 @@ namespace TrackingCam.Plugins.PTZ
     #endregion
 
     #region --- Fields ---
+
+    protected PTZControl _ptz;
 
     protected IMotionController _motion;
     protected IZoomController _zoom;
@@ -82,6 +85,9 @@ namespace TrackingCam.Plugins.PTZ
       _motion = FoscamMotion.CreateFoscamMotionController(cameraType, url, username, password);
       _zoom = FoscamZoom.CreateFoscamZoomController(cameraType, url, username, password);
 
+      //Create PTZ control UI
+      _ptz = new PTZControl() { MotionController = _motion, ZoomController = _zoom };
+
       _panAngleStep = (double?)settings[PTZSettings.SETTING_PAN_ANGLE_STEP] ?? DEFAULT_PAN_ANGLE_STEP;
       _tiltAngleStep = (double?)settings[PTZSettings.SETTING_TILT_ANGLE_STEP] ?? DEFAULT_TILT_ANGLE_STEP;
 
@@ -93,6 +99,11 @@ namespace TrackingCam.Plugins.PTZ
     #endregion
 
     #region --- Properties ---
+
+    public UIElement Display
+    {
+      get { return _ptz;  }
+    }
 
     protected string CurrentPresetPoint
     {
