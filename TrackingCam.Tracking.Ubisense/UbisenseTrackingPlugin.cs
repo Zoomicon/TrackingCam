@@ -53,7 +53,7 @@ namespace TrackingCam.Plugins.Tracking
     {
       _positioning = new UbisensePositioningUI();
       _positioning.Positioning.GetObjectsCompleted += UbisensePositioning_GetObjectsCompleted;
-      _positioning.Positioning.GetObjectsAsync(); //getting objects may take some time
+      //do not do _positioning.Positioning.GetObjectsAsync(), since UbisensePositioningUI also calls it (would result in objects getting displayed twice at UbisensePositioningUI's list)
     }
 
     #endregion
@@ -108,7 +108,10 @@ namespace TrackingCam.Plugins.Tracking
     {
       foreach (var o in objects)
         if (o.Key == _key)
+        {
           _positioning.Positioning.SelectedObject = o.Value;
+          return;
+        }
     }
 
     #endregion

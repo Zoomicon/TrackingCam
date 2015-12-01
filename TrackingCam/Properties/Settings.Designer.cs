@@ -85,7 +85,7 @@ namespace TrackingCam.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Tag1")]
         public string Tracking_ObjectKey {
             get {
                 return ((string)(this["Tracking_ObjectKey"]));

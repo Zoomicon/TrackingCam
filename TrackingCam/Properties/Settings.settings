@@ -18,7 +18,7 @@
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="Tracking_ObjectKey" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">Tag1</Value>
     </Setting>
     <Setting Name="Pan_Angle_Step" Type="System.Double" Scope="User">
       <Value Profile="(Default)">10</Value>
