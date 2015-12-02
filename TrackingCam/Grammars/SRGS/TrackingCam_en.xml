@@ -1,0 +1,39 @@
+﻿<!--
+Project: TrackingCam (http://TrackingCam.codeplex.com)
+Filename: TrackingCam_en.xml
+Version: 20151202
+-->
+
+<grammar
+  xmlns="http://www.w3.org/2001/06/grammar"
+  tag-format="semantics/1.0"
+  version="1.0"
+  root="rootRule"
+  xml:lang="en"
+  >
+
+  <!--
+    Note: System.Speech doesn't support tag-format="semantics/1.0-literals" (Microsoft.Speech does instead),
+    so using tag-format="semantics/1.0" and instead of <tag>x</tag> using <tag>out="x"</tag>
+  -->
+
+  <rule id="rootRule">
+    <one-of>
+
+      <item>
+        <tag>out="ZOOM_IN"</tag>
+        <one-of>
+          <item> zoom </item>
+        </one-of>
+      </item>
+
+      <item>
+        <tag>out="ZOOM_OUT"</tag>
+        <one-of>
+          <item> unzoom </item>
+        </one-of>
+      </item>
+
+    </one-of>
+  </rule>
+</grammar>

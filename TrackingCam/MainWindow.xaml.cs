@@ -115,6 +115,8 @@ namespace TrackingCam
     private void Window_Loaded(object sender, RoutedEventArgs e)
     {
       InitializeUI();
+      if (ptz != null)
+        speechSynthesis?.Speak("You can use speech commands Zoom in and Zoom out");
     }
 
     private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

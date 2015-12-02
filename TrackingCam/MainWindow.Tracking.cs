@@ -28,7 +28,7 @@ namespace TrackingCam
     public ITracker LoadTrackingPlugin(string protocol)
     {
       Lazy<ITracker> plugin = PluginsCatalog.mefContainer.GetExports<ITracker>(protocol).FirstOrDefault(); //TODO: change this to select from app settings which tracking plugin to use instead of just using the 1st one found
-      ITracker tracker = plugin.Value;
+      ITracker tracker = (plugin != null) ? plugin.Value : null;
       try
       {
         (tracker as IInitializable)?.Initialize(Settings.Default);

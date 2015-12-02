@@ -1,6 +1,6 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
-//File: Plugins.cs
-//Version: 20151117
+//File: PluginsCatalog.cs
+//Version: 20151202
 
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
@@ -34,7 +34,13 @@ namespace TrackingCam.Plugins
         "TrackingCam.PTZ.Foscam.dll",
         //
         "TrackingCam.Tracking.KinectAudio.dll",
-        "TrackingCam.Tracking.Ubisense.dll"
+        "TrackingCam.Tracking.Ubisense.dll",
+        //
+        /*
+        "SpeechLib.Synthesis",
+        "SpeechLib.Recognition",
+        "SpeechLib.Recognition.KinectV1"
+        */
       };
 
       foreach (string s in assemblies)

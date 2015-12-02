@@ -27,7 +27,7 @@ namespace TrackingCam
     public void LoadPTZPlugin()
     {
       Lazy<IPTZ> plugin = PluginsCatalog.mefContainer.GetExports<IPTZ>("PTZ").FirstOrDefault(); //TODO: change this to select from app settings which tracking plugin to use instead of just using the 1st one found
-      ptz = plugin.Value;
+      ptz = (plugin != null) ? plugin.Value : null;
       try
       {
         (ptz as IInitializable)?.Initialize(Settings.Default);

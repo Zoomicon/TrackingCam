@@ -28,7 +28,7 @@ namespace TrackingCam
     public IVideo LoadVideoPlugin(string protocol)
     {
       Lazy<IVideo> plugin = PluginsCatalog.mefContainer.GetExports<IVideo>(protocol).FirstOrDefault(); //TODO: change this to select from app settings which video plugin to use instead of just using the 1st one found
-      IVideo video = plugin.Value;
+      IVideo video = (plugin != null) ? plugin.Value : null;
       try
       {
         (video as IInitializable)?.Initialize(Settings.Default);
