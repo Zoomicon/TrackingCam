@@ -1,8 +1,9 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: MainWindow.Tracking.cs
-//Version: 20151201
+//Version: 20151202
 
 using System;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 
@@ -20,6 +21,18 @@ namespace TrackingCam
 
     protected ITracker trackerKinectAudio;
     protected ITracker trackerUbisense;
+    protected BackgroundWorker presenterTracker;
+
+    #endregion
+
+    #region --- Properties
+
+    public bool TrackingPresenter
+    {
+      get { return (presenterTracker != null) && !presenterTracker.IsBusy; }
+      set { if (value) StartTrackingPresenter(); else StopTrackingPresenter(); } //StartTrackingPresenter will check if it is already tracking the presenter and do nothing
+    }
+
 
     #endregion
 
@@ -56,6 +69,28 @@ namespace TrackingCam
       LoadKinectAudioTrackingPlugin();
       LoadUbisenseTrackingPlugin();
     }
+
+    #region Presenter Tracking
+
+    public void StartTrackingPresenter()
+    {
+      if (TrackingPresenter) return; //check if already tracking the presenter and do nothing
+
+      presenterTracker = new BackgroundWorker();
+      presenterTracker.DoWork += (s, e) =>
+      {
+        while (!e.Cancel)
+          LookToPresenter();
+      };
+      presenterTracker.RunWorkerAsync();
+    }
+
+    public void StopTrackingPresenter()
+    {
+      presenterTracker.CancelAsync();
+    }
+
+    #endregion
 
     #endregion
 

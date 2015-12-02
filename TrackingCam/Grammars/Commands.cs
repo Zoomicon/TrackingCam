@@ -11,6 +11,8 @@ namespace TrackingCam
 
     public const string ZOOM_IN = "ZOOM_IN";
     public const string ZOOM_OUT = "ZOOM_OUT";
+    public const string TRACK_ON = "TRACK_ON";
+    public const string TRACK_OFF = "TRACK_OFF";
 
     #endregion
 

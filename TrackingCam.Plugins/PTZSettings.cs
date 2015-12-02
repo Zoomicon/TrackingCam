@@ -1,6 +1,6 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: PTZSettings.cs
-//Version: 20151127
+//Version: 20151202
 
 namespace TrackingCam.Plugins.PTZ
 {
@@ -15,8 +15,10 @@ namespace TrackingCam.Plugins.PTZ
     public const string SETTING_CAMERA_USERNAME = "Camera_Username";
     public const string SETTING_CAMERA_PASSWORD = "Camera_Password";
 
-    public const string SETTING_PAN_ANGLE_STEP = "Pan_Angle_Step";
-    public const string SETTING_TILT_ANGLE_STEP = "Tilt_Angle_Step";
+    public const string SETTING_PRESET_COUNT = "PTZ_Preset_Count";
+    public const string SETTING_PRESET_PREFIX = "PTZ_Preset_Prefix";
+    public const string SETTING_MIN_PAN_ANGLE = "PTZ_MinPanAngle";
+    public const string SETTING_MAX_PAN_ANGLE = "PTZ_MaxPanAngle";
 
     #endregion
 

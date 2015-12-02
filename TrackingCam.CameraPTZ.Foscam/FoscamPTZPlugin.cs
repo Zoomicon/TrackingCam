@@ -1,6 +1,6 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: FoscamPTZPlugin.cs
-//Version: 20151201
+//Version: 20151202
 
 using Camera;
 using Camera.Foscam;
@@ -29,8 +29,11 @@ namespace TrackingCam.Plugins.PTZ
     protected const string DEFAULT_USERNAME = "admin";
     protected const string DEFAULT_PASSWORD = "admin";
 
-    protected const double DEFAULT_PAN_ANGLE_STEP = 10.0; //degrees
-    protected const double DEFAULT_TILT_ANGLE_STEP = 90.0; //degrees //TODO: adjust this according to Foscam camera limits, may also allow setting min, max limit values
+    protected const double DEFAULT_MIN_PAN_ANGLE = -45.0; //degrees
+    protected const double DEFAULT_MAX_PAN_ANGLE = 45.0; //degrees
+
+    protected const string DEFAULT_PRESET_PREFIX = "Prefix";
+    protected const int DEFAULT_PRESET_COUNT = 10;
 
     #endregion
 
@@ -42,10 +45,13 @@ namespace TrackingCam.Plugins.PTZ
     protected IZoomController _zoom;
 
     protected double _panAngle, _tiltAngle; //=0
-    protected double _panAngleStep = DEFAULT_PAN_ANGLE_STEP;
-    protected double _tiltAngleStep = DEFAULT_TILT_ANGLE_STEP;
+    protected double _minPanAngle = DEFAULT_MIN_PAN_ANGLE;
+    protected double _maxPanAngle = DEFAULT_MAX_PAN_ANGLE;
 
     protected double _zoomLevel; //=0;
+
+    protected string _presetPrefix = DEFAULT_PRESET_PREFIX;
+    protected int _presetCount = DEFAULT_PRESET_COUNT;
 
     #endregion
 
@@ -88,8 +94,11 @@ namespace TrackingCam.Plugins.PTZ
       //Create PTZ control UI
       _ptz = new PTZControl() { MotionController = _motion, ZoomController = _zoom };
 
-      _panAngleStep = (double?)settings[PTZSettings.SETTING_PAN_ANGLE_STEP] ?? DEFAULT_PAN_ANGLE_STEP;
-      _tiltAngleStep = (double?)settings[PTZSettings.SETTING_TILT_ANGLE_STEP] ?? DEFAULT_TILT_ANGLE_STEP;
+      _minPanAngle = (double?)settings[PTZSettings.SETTING_MIN_PAN_ANGLE] ?? DEFAULT_MIN_PAN_ANGLE;
+      _maxPanAngle = (double?)settings[PTZSettings.SETTING_MAX_PAN_ANGLE] ?? DEFAULT_MAX_PAN_ANGLE;
+
+      _presetCount = (int?)settings[PTZSettings.SETTING_PRESET_COUNT] ?? DEFAULT_PRESET_COUNT;
+      _presetPrefix = (string)settings[PTZSettings.SETTING_PRESET_PREFIX] ?? DEFAULT_PRESET_PREFIX;
 
       //Unzoom
       ZoomLevel = 0;
@@ -107,7 +116,11 @@ namespace TrackingCam.Plugins.PTZ
 
     protected string CurrentPresetPoint
     {
-      get { return ((int)_panAngle).ToString() + ":" + ((int)_tiltAngle).ToString();  }
+      get
+      {
+        int presetNum = (int)((_maxPanAngle - _minPanAngle) / (_panAngle - _minPanAngle)  / (double)_presetCount);
+        return _presetPrefix + ((int)_panAngle);
+      }
     }
 
     public double PanAngle
@@ -119,7 +132,7 @@ namespace TrackingCam.Plugins.PTZ
 
       set
       {
-        _panAngle = ((int)(PanAngle / _panAngleStep) * _panAngleStep);
+        _panAngle = value;
         _motion.MotionGotoPreset(CurrentPresetPoint);
       }
     }
@@ -133,7 +146,7 @@ namespace TrackingCam.Plugins.PTZ
 
       set
       {
-        _tiltAngle = ((int)(PanAngle / _tiltAngleStep) * _tiltAngleStep);
+        _tiltAngle = value;
         _motion.MotionGotoPreset(CurrentPresetPoint);
       }
     }

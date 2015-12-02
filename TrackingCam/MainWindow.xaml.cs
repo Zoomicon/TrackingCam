@@ -1,6 +1,6 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: MainWindow.xaml.cs
-//Version: 20151201
+//Version: 20151202
 
 //using SilverFlow.Controls;
 using System;
@@ -116,7 +116,9 @@ namespace TrackingCam
     {
       InitializeUI();
       if (ptz != null)
-        speechSynthesis?.Speak("You can use speech commands Zoom in and Zoom out");
+        speechSynthesis?.Speak("You can use speech commands Track, Don't Track, Zoom and Unzoom");
+
+      TrackingPresenter = true; //start tracking the presenter
     }
 
     private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

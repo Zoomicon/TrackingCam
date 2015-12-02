@@ -1,6 +1,6 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: UbisenseTrackingPlugin.cs
-//Version: 20151201
+//Version: 20151202
 
 using System;
 using System.Collections.Generic;
@@ -24,6 +24,13 @@ namespace TrackingCam.Plugins.Tracking
 
     public const double DEFAULT_DISTANCE = 0; //if set to 0, will use Z value from ubisence as distance at PositionAngle calculation
 
+    public const double DEFAULT_MIN_X = 0;
+    public const double DEFAULT_MAX_X = 6;
+
+    public const double DEFAULT_CAMERA_X = 3;
+    public const double DEFAULT_CAMERA_Y = 6;
+    public const double DEFAULT_CAMERA_Z = 1;
+
     #endregion
 
     #region --- Fields ---
@@ -31,6 +38,10 @@ namespace TrackingCam.Plugins.Tracking
     protected UbisensePositioningUI _positioning; //=null
     protected string _key; //=null
     protected double _distance = DEFAULT_DISTANCE;
+
+    protected double _cameraX = DEFAULT_CAMERA_X;
+    protected double _cameraY = DEFAULT_CAMERA_Y;
+    protected double _cameraZ = DEFAULT_CAMERA_Z;
 
     #endregion
 
@@ -44,7 +55,11 @@ namespace TrackingCam.Plugins.Tracking
     {
       _distance = (double?)settings[TrackingSettings.SETTING_TRACKING_DISTANCE] ?? DEFAULT_DISTANCE;
 
-      _key = (string)settings[TrackingSettings.SETTING_TRACKING_OBJECT_KEY];
+      _key = (string)settings[TrackingSettings.SETTING_TRACKING_OBJECT];
+
+      _cameraX = (double?)settings[TrackingSettings.SETTING_TRACKING_CAMERA_X] ?? DEFAULT_CAMERA_X;
+      _cameraY = (double?)settings[TrackingSettings.SETTING_TRACKING_CAMERA_Y] ?? DEFAULT_CAMERA_Y;
+      _cameraZ = (double?)settings[TrackingSettings.SETTING_TRACKING_CAMERA_Z] ?? DEFAULT_CAMERA_Z;
 
       InitializeAsync();
     }
@@ -96,7 +111,7 @@ namespace TrackingCam.Plugins.Tracking
     {
       get
       {
-        return Math.Atan2(PositionHorizontal, (_distance != 0) ? _distance : PositionDepth); //if a distance hasn't been set, assume the camera is placed at the start of the ubisense area (assuming it is set to z=0), in the middle of it (assuming it is set to x=0)
+        return Math.Atan2(PositionHorizontal - _cameraX, PositionVertical - _cameraY);
       }
     }
 

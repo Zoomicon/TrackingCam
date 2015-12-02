@@ -1,8 +1,9 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: MainWindow.PTZ.cs
-//Version: 20151128
+//Version: 20151202
 
 using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 
@@ -36,6 +37,18 @@ namespace TrackingCam
         ptz = null;
         MessageBox.Show((e.InnerException ?? e).Message);
       }
+    }
+
+    public void LookToPresenter()
+    {
+      double angle =
+        trackerUbisense
+        //trackerKinectAudio
+        .PositionAngle;
+
+      Debug.WriteLine(angle);
+
+      ptz.PanAngle = angle;
     }
 
     #endregion

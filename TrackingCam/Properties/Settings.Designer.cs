@@ -118,5 +118,77 @@ namespace TrackingCam.Properties {
                 this["Tilt_Angle_Step"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3.39863228797913")]
+        public double Tracking_CameraX {
+            get {
+                return ((double)(this["Tracking_Camera_X"]));
+            }
+            set {
+                this["Tracking_Camera_X"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("6.21996164321899")]
+        public double Tracking_CameraY {
+            get {
+                return ((double)(this["Tracking_Camera_Y"]));
+            }
+            set {
+                this["Tracking_Camera_Y"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-0.881328535079954")]
+        public double Tracking_CameraZ {
+            get {
+                return ((double)(this["Tracking_Camera_Z"]));
+            }
+            set {
+                this["Tracking_Camera_Z"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Preset")]
+        public string PTZ_PresetPrefix {
+            get {
+                return ((string)(this["PTZ_PresetPrefix"]));
+            }
+            set {
+                this["PTZ_PresetPrefix"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public string PTZ_PresetCount {
+            get {
+                return ((string)(this["PTZ_PresetCount"]));
+            }
+            set {
+                this["PTZ_PresetCount"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1.27")]
+        public double Tracking_Min_X {
+            get {
+                return ((double)(this["Tracking_Min_X"]));
+            }
+            set {
+                this["Tracking_Min_X"] = value;
+            }
+        }
     }
 }

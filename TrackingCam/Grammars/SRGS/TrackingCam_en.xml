@@ -34,6 +34,20 @@ Version: 20151202
         </one-of>
       </item>
 
+      <item>
+        <tag>out="TRACK_ON"</tag>
+        <one-of>
+          <item> track </item>
+        </one-of>
+      </item>
+
+      <item>
+        <tag>out="TRACK_OFF"</tag>
+        <one-of>
+          <item> don't track </item>
+        </one-of>
+      </item>
+
     </one-of>
   </rule>
 </grammar>

@@ -3,7 +3,6 @@
 //Version: 20151202
 
 using System;
-using System.ComponentModel.Composition;
 using System.Windows;
 
 using SpeechLib.Models;
@@ -98,6 +97,12 @@ namespace TrackingCam
           case Commands.ZOOM_OUT:
             if (ptz != null)
               ptz.ZoomLevel = 0;
+            break;
+          case Commands.TRACK_ON:
+            StartTrackingPresenter();
+            break;
+          case Commands.TRACK_OFF:
+            StopTrackingPresenter();
             break;
         }
     }
