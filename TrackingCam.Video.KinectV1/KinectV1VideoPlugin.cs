@@ -1,8 +1,8 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: KinectV1VideoPlugin.cs
-//Version: 20151127
+//Version: 20151203
 
-//TODO: maybe extend IDisposable
+//TODO: maybe implement IDisposable
 
 using System;
 using System.ComponentModel.Composition;
@@ -45,6 +45,8 @@ namespace TrackingCam.Plugins.Video
 
     private void Sensor_ColorFrameReady(object sender, ColorImageFrameReadyEventArgs e)
     {
+      if (_kinectViewer == null) return;
+
       using (var frame = e.OpenColorImageFrame())
         if (frame != null)
           _kinectViewer.Update(frame.ToBitmap());
@@ -67,8 +69,14 @@ namespace TrackingCam.Plugins.Video
       get
       {
         if (_kinectViewer == null)
-          _kinectViewer = new KinectViewer() { FrameType = VisualizationMode.Color }; //TODO: see what throws exception here when Kinect is disconnected and fix to have better message or catch and throw with better message
-
+          try
+          {
+            _kinectViewer = new KinectViewer() { FrameType = VisualizationMode.Color }; //TODO: see what throws exception here when Kinect is disconnected and fix to have better message
+          }
+          catch (Exception e)
+          {
+            MessageBox.Show(e.Message, "Kinect Video");
+          }
         return _kinectViewer;
       }
     }
@@ -79,12 +87,12 @@ namespace TrackingCam.Plugins.Video
 
     public void Start()
     {
-      _kinectSensor.Start(); //note: if it takes too long to start/stop, could start ones and use Enable/Disable method on ColorStream (or even attach/detach the ColorFrameReady event handler, or use a _started class field to ignore the frame)
+      _kinectSensor?.Start(); //note: if it takes too long to start/stop, could start ones and use Enable/Disable method on ColorStream (or even attach/detach the ColorFrameReady event handler, or use a _started class field to ignore the frame)
     }
 
     public void Stop()
     {
-      _kinectSensor.Stop();
+      _kinectSensor?.Stop();
     }
 
     #endregion
