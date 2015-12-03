@@ -20,9 +20,13 @@ namespace TrackingCam
 
     #region --- Fields ---
 
+    protected IActionable actionableKinectGestures;
     protected IActionable actionableUbisense;
+
     protected ITracker trackerKinectAudio;
+    protected ITracker trackerKinectDepth;
     protected ITracker trackerUbisense;
+
     protected BackgroundWorker presenterTracker;
 
     #endregion
@@ -62,6 +66,15 @@ namespace TrackingCam
       trackerKinectAudio = LoadTrackingPlugin("Tracking.KinectAudio");
     }
 
+    public void LoadKinectDepthTrackingPlugin()
+    {
+      trackerKinectDepth = LoadTrackingPlugin("Tracking.KinectV1Depth");
+
+      actionableKinectGestures = trackerKinectDepth as IActionable;
+      if (actionableKinectGestures != null)
+        actionableKinectGestures.ActionOccured += ActionableKinectGestures_ActionOccured;
+    }
+
     public void LoadUbisenseTrackingPlugin()
     {
       trackerUbisense = LoadTrackingPlugin("Tracking.Ubisense");
@@ -74,6 +87,7 @@ namespace TrackingCam
     public void LoadTrackingPlugins()
     {
       LoadKinectAudioTrackingPlugin();
+      LoadKinectDepthTrackingPlugin();
       LoadUbisenseTrackingPlugin();
     }
 
@@ -87,7 +101,14 @@ namespace TrackingCam
       presenterTracker.DoWork += (s, e) =>
       {
         while (!e.Cancel)
-          LookToPresenter();
+        {
+          double angle =
+            //trackerKinectAudio
+            //trackerKinectVideo
+            trackerUbisense
+              .PositionAngle;
+          LookTo(angle); //look to presenter
+        }
       };
       presenterTracker.RunWorkerAsync();
     }
@@ -102,6 +123,21 @@ namespace TrackingCam
     #endregion
 
     #region --- Events ---
+
+    private void ActionableKinectGestures_ActionOccured(object sender, string id, string action)
+    {
+      switch (action)
+      {
+        case "ZoomIn":
+          if (ptz != null)
+            ptz.ZoomLevel = 1;
+          break;
+        case "ZoomOut":
+          if (ptz != null)
+            ptz.ZoomLevel = 0;
+          break;
+      }
+    }
 
     private void ActionableUbisense_ActionOccured(object sender, string id, string action)
     {

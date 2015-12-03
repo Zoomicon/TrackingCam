@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9E40D4F3-DEBC-4E2D-BA57-232CAB2C3FE2}</ProjectGuid>
+    <ProjectGuid>{AB6177B2-680E-44D1-9844-639CFC40EFEB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TrackingCam.Video.KinectV1</RootNamespace>
-    <AssemblyName>TrackingCam.Video.KinectV1</AssemblyName>
+    <RootNamespace>TrackingCam.Tracking.KinectDepth</RootNamespace>
+    <AssemblyName>TrackingCam.Tracking.KinectDepth</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,7 +20,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,15 +28,16 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="LightBuzz.Vitruvius, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="KinectV1DepthTrackingPlugin.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="LightBuzz.Vitruvius">
       <HintPath>..\Libraries\LightBuzz.Vitruvius.dll</HintPath>
     </Reference>
-    <Reference Include="LightBuzz.Vitruvius.WPF, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="LightBuzz.Vitruvius.WPF">
       <HintPath>..\Libraries\LightBuzz.Vitruvius.WPF.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Kinect, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -47,10 +46,6 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="WindowsBase" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="KinectV1VideoPlugin.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TrackingCam.Plugins\TrackingCam.Plugins.csproj">

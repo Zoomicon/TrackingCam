@@ -36,8 +36,11 @@ namespace TrackingCam
 
       videoFoscam = null;
       videoKinect = null;
-      trackerUbisense = null;
+
       trackerKinectAudio = null;
+      trackerKinectDepth = null;
+      trackerUbisense = null;
+
       ptz = null;
     }
 

@@ -34,6 +34,7 @@ namespace TrackingCam.Plugins
         "TrackingCam.PTZ.Foscam.dll",
         //
         "TrackingCam.Tracking.KinectAudio.dll",
+        "TrackingCam.Tracking.KinectDepth.dll",
         "TrackingCam.Tracking.Ubisense.dll",
         //
         "SpeechLib.Synthesis.dll",

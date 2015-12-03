@@ -8,6 +8,7 @@ using Camera.Foscam;
 using System;
 using System.ComponentModel.Composition;
 using System.Configuration;
+using System.Threading;
 using System.Windows;
 
 namespace TrackingCam.Plugins.PTZ
@@ -163,7 +164,13 @@ namespace TrackingCam.Plugins.PTZ
         if (value == 0)
           _zoom.ZoomOut();
         else
+        {
           _zoom.ZoomIn();
+          /**/
+          Thread.Sleep(600);
+          _zoom.ZoomStop(); //don't zoom in too much //TODO: use some option for this
+          /**/
+        }
 
         _zoomLevel = value;
       }

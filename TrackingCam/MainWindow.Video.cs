@@ -1,6 +1,6 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: MainWindow.Video.cs
-//Version: 20151128
+//Version: 20151203
 
 using System;
 using System.Linq;
@@ -53,7 +53,7 @@ namespace TrackingCam
 
     public void LoadVideoPlugins()
     {
-      LoadKinectVideoPlugin();
+      //LoadKinectVideoPlugin();
       LoadFoscamVideoPlugin();
     }
 

@@ -169,6 +169,10 @@
       <Project>{04142e1d-8307-4508-9ad8-ff02608b1c1c}</Project>
       <Name>TrackingCam.Tracking.KinectAudio</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TrackingCam.Tracking.KinectDepth\TrackingCam.Tracking.KinectDepth.csproj">
+      <Project>{ab6177b2-680e-44d1-9844-639cfc40efeb}</Project>
+      <Name>TrackingCam.Tracking.KinectDepth</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TrackingCam.Tracking.Ubisense\TrackingCam.Tracking.Ubisense.csproj">
       <Project>{f45e6ef7-8634-49a3-941e-0348092b780b}</Project>
       <Name>TrackingCam.Tracking.Ubisense</Name>

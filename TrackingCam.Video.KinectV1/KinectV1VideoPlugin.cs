@@ -12,6 +12,7 @@ using LightBuzz.Vitruvius;
 using LightBuzz.Vitruvius.Controls;
 using Microsoft.Kinect;
 using LightBuzz.Vitruvius.WPF;
+using System.Configuration;
 
 namespace TrackingCam.Plugins.Video
 {
@@ -20,7 +21,7 @@ namespace TrackingCam.Plugins.Video
   [Export("Video.KinectV1", typeof(IVideo))]
   [ExportMetadata("Description", "Kinect v1")]
   [PartCreationPolicy(CreationPolicy.Shared)]
-  public class KinectV1VideoPlugin : IVideo
+  public class KinectV1VideoPlugin : IVideo, IInitializable
   {
 
     #region --- Fields ---
@@ -34,6 +35,10 @@ namespace TrackingCam.Plugins.Video
 
     public KinectV1VideoPlugin()
     {
+    }
+
+    public void Initialize(SettingsBase settings) //throws Exception
+    {
       _kinectSensor = SensorExtensions.Default();
 
       if (_kinectSensor != null)
@@ -41,15 +46,6 @@ namespace TrackingCam.Plugins.Video
         _kinectSensor.ColorStream.Enable();
         _kinectSensor.ColorFrameReady += Sensor_ColorFrameReady;
       }
-    }
-
-    private void Sensor_ColorFrameReady(object sender, ColorImageFrameReadyEventArgs e)
-    {
-      if (_kinectViewer == null) return;
-
-      using (var frame = e.OpenColorImageFrame())
-        if (frame != null)
-          _kinectViewer.Update(frame.ToBitmap());
     }
 
     #endregion
@@ -81,7 +77,7 @@ namespace TrackingCam.Plugins.Video
       }
     }
 
-#endregion
+    #endregion
 
     #region --- Methods ---
 
@@ -96,6 +92,20 @@ namespace TrackingCam.Plugins.Video
     }
 
     #endregion
+
+    #region --- Events ---
+
+    private void Sensor_ColorFrameReady(object sender, ColorImageFrameReadyEventArgs e)
+    {
+      if (_kinectViewer == null) return;
+
+      using (var frame = e.OpenColorImageFrame())
+        if (frame != null)
+          _kinectViewer.Update(frame.ToBitmap());
+    }
+
+    #endregion
+
   }
 
 }

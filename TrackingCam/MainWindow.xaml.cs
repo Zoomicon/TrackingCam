@@ -1,6 +1,6 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: MainWindow.xaml.cs
-//Version: 20151202
+//Version: 20151203
 
 //using SilverFlow.Controls;
 using System;
@@ -29,10 +29,11 @@ namespace TrackingCam
     public void InitializeUI()
     {
       AddDisplayable(videoFoscam, "Video - Foscam IP Camera", new Rect(0, 0, 600, 600)); //IVideo interface extends from IDisplayable
-      AddDisplayable(videoKinect, "Video - Kinect Color Camera", new Rect(0, 600, 1000, 150)); //IVideo interface extends from IDisplayable
+      //AddDisplayable(videoKinect, "Video - Kinect Color Camera", new Rect(0, 600, 1000, 150)); //IVideo interface extends from IDisplayable
 
       AddDisplayable(ptz as IDisplayable, "PTZ - Foscam IP Camera", new Rect(600, 200, 200, 200)); //AddDisplayable will ignore the call if null (that is if the tracker isn't an IDisplayable)
       AddDisplayable(trackerKinectAudio as IDisplayable, "Tracking - Kinect Microphone Array", new Rect(800, 200, 200, 200)); //AddDisplayable will ignore the call if null (that is if the tracker isn't an IDisplayable)
+      AddDisplayable(trackerKinectDepth as IDisplayable, "Tracking - Kinect Depth", new Rect(600, 400, 400, 350));
       AddDisplayable(trackerUbisense as IDisplayable, "Tracking - Kinect Microphone Array", new Rect(600, 0, 400, 200)); //AddDisplayable will ignore the call if null (that is if the tracker isn't an IDisplayable)
     }
 

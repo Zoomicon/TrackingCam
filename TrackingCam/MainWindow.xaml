@@ -34,14 +34,14 @@ Version: 20151201
   <Grid x:Name="layout">
 
     <!-- TODO: REMOVE TEMP FIX -->
-    <Viewbox Stretch="Uniform">
+    <Viewbox Stretch="Uniform" Grid.Row="0">
       <Canvas x:Name="canvas" Width="1000" Height="750"/>
     </Viewbox>
 
     <!--
 
     <float:FloatingWindowHostZUI
-        x:Name="host" Grid.Column="2" MinWidth="100"
+        x:Name="host" Grid.Row="0" MinWidth="100"
         SnapinEnabled="{Binding ElementName=cbxEnableSnapin, Path=IsChecked}"
         SnapinDistance="{Binding ElementName=txtSnapinDistance, Path=Text}"
         SnapinMargin="{Binding ElementName=txtSnapinMargin, Path=Text}"
