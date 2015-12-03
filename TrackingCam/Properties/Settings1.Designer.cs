@@ -97,61 +97,13 @@ namespace TrackingCam.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10")]
-        public double Pan_Angle_Step {
-            get {
-                return ((double)(this["Pan_Angle_Step"]));
-            }
-            set {
-                this["Pan_Angle_Step"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("90")]
-        public double Tilt_Angle_Step {
-            get {
-                return ((double)(this["Tilt_Angle_Step"]));
-            }
-            set {
-                this["Tilt_Angle_Step"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("3.39863228797913")]
+        [global::System.Configuration.DefaultSettingValueAttribute("3.23816204071045")]
         public double Tracking_CameraX {
             get {
-                return ((double)(this["Tracking_Camera_X"]));
+                return ((double)(this["Tracking_CameraX"]));
             }
             set {
-                this["Tracking_Camera_X"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("6.21996164321899")]
-        public double Tracking_CameraY {
-            get {
-                return ((double)(this["Tracking_Camera_Y"]));
-            }
-            set {
-                this["Tracking_Camera_Y"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("-0.881328535079954")]
-        public double Tracking_CameraZ {
-            get {
-                return ((double)(this["Tracking_Camera_Z"]));
-            }
-            set {
-                this["Tracking_Camera_Z"] = value;
+                this["Tracking_CameraX"] = value;
             }
         }
         
@@ -170,9 +122,9 @@ namespace TrackingCam.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("10")]
-        public string PTZ_PresetCount {
+        public int PTZ_PresetCount {
             get {
-                return ((string)(this["PTZ_PresetCount"]));
+                return ((int)(this["PTZ_PresetCount"]));
             }
             set {
                 this["PTZ_PresetCount"] = value;
@@ -181,13 +133,49 @@ namespace TrackingCam.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1.27")]
-        public double Tracking_Min_X {
+        [global::System.Configuration.DefaultSettingValueAttribute("-45")]
+        public double PTZ_MinPanAngle {
             get {
-                return ((double)(this["Tracking_Min_X"]));
+                return ((double)(this["PTZ_MinPanAngle"]));
             }
             set {
-                this["Tracking_Min_X"] = value;
+                this["PTZ_MinPanAngle"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("45")]
+        public double PTZ_MaxPanAngle {
+            get {
+                return ((double)(this["PTZ_MaxPanAngle"]));
+            }
+            set {
+                this["PTZ_MaxPanAngle"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("6.20297193527222")]
+        public double Tracking_CameraY {
+            get {
+                return ((double)(this["Tracking_CameraY"]));
+            }
+            set {
+                this["Tracking_CameraY"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-0.714946579840356")]
+        public double Tracking_CameraZ {
+            get {
+                return ((double)(this["Tracking_CameraZ"]));
+            }
+            set {
+                this["Tracking_CameraZ"] = value;
             }
         }
     }

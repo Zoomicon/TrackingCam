@@ -1,14 +1,17 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: UbisenseTrackingPlugin.cs
-//Version: 20151202
+//Version: 20151203
 
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Configuration;
 using System.Windows;
+
 using Ubisense.Positioning.WPF;
 using Ubisense.UBase;
+
+using TrackingCam.Plugins.Actions;
 
 namespace TrackingCam.Plugins.Tracking
 {
@@ -17,7 +20,7 @@ namespace TrackingCam.Plugins.Tracking
   [Export("Tracking.Ubisense", typeof(ITracker))]
   [ExportMetadata("Description", "Ubisense Tracking")]
   [PartCreationPolicy(CreationPolicy.Shared)]
-  public class UbisenseTrackingPlugin : ITracker, IInitializable, IDisplayable
+  public class UbisenseTrackingPlugin : ITracker, IInitializable, IDisplayable, IActionable
   {
 
     #region --- Constants ---
@@ -68,6 +71,7 @@ namespace TrackingCam.Plugins.Tracking
     {
       _positioning = new UbisensePositioningUI();
       _positioning.Positioning.GetObjectsCompleted += UbisensePositioning_GetObjectsCompleted;
+      _positioning.Positioning.ButtonPressed += Positioning_ButtonPressed;
       //do not do _positioning.Positioning.GetObjectsAsync(), since UbisensePositioningUI also calls it (would result in objects getting displayed twice at UbisensePositioningUI's list)
     }
 
@@ -119,6 +123,8 @@ namespace TrackingCam.Plugins.Tracking
 
     #region --- Events ---
 
+    public event ActionEvents.ActionableEventHandler ActionOccured;
+
     private void UbisensePositioning_GetObjectsCompleted(object sender, SortedDictionary<string, UObject> objects)
     {
       foreach (var o in objects)
@@ -127,6 +133,12 @@ namespace TrackingCam.Plugins.Tracking
           _positioning.Positioning.SelectedObject = o.Value;
           return;
         }
+    }
+
+    private void Positioning_ButtonPressed(object sender, Ubisense.UData.Data.ObjectButtonPressed.RowType? oldRow, Ubisense.UData.Data.ObjectButtonPressed.RowType newRow)
+    {
+      if (ActionOccured != null)
+        ActionOccured(this, newRow.object_.Id.ToString(), newRow.button_.ToString());
     }
 
     #endregion

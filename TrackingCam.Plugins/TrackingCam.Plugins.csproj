@@ -39,7 +39,9 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionEvents.cs" />
     <Compile Include="IDisplayable.cs" />
+    <Compile Include="IActionable.cs" />
     <Compile Include="PluginsCatalog.cs" />
     <Compile Include="IPTZ.cs" />
     <Compile Include="ITracker.cs" />

@@ -110,7 +110,7 @@
     </ApplicationDefinition>
     <Compile Include="Grammars\Commands.cs" />
     <Compile Include="MainWindow.Speech.cs" />
-    <Compile Include="Properties\Settings.Designer.cs">
+    <Compile Include="Properties\Settings1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -145,6 +145,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <Compile Include="MainWindow.Video.cs" />
+    <None Include="app.config" />
     <None Include="LibVlc\plugins\plugins.dat">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -154,9 +155,6 @@
       <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TrackingCam.CameraPTZ.Foscam\TrackingCam.PTZ.Foscam.csproj">

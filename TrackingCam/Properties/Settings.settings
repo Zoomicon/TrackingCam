@@ -21,18 +21,12 @@
       <Value Profile="(Default)">Tag1</Value>
     </Setting>
     <Setting Name="Tracking_CameraX" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">3.39863228797913</Value>
-    </Setting>
-    <Setting Name="Tracking_CameraY" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">6.21996164321899</Value>
-    </Setting>
-    <Setting Name="Tracking_CameraZ" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">-0.881328535079954</Value>
+      <Value Profile="(Default)">3.23816204071045</Value>
     </Setting>
     <Setting Name="PTZ_PresetPrefix" Type="System.String" Scope="User">
       <Value Profile="(Default)">Preset</Value>
     </Setting>
-    <Setting Name="PTZ_PresetCount" Type="System.String" Scope="User">
+    <Setting Name="PTZ_PresetCount" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">10</Value>
     </Setting>
     <Setting Name="PTZ_MinPanAngle" Type="System.Double" Scope="User">
@@ -40,6 +34,12 @@
     </Setting>
     <Setting Name="PTZ_MaxPanAngle" Type="System.Double" Scope="User">
       <Value Profile="(Default)">45</Value>
+    </Setting>
+    <Setting Name="Tracking_CameraY" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">6.20297193527222</Value>
+    </Setting>
+    <Setting Name="Tracking_CameraZ" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">-0.714946579840356</Value>
     </Setting>
   </Settings>
 </SettingsFile>

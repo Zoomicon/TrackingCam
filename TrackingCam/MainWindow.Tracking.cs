@@ -1,6 +1,6 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: MainWindow.Tracking.cs
-//Version: 20151202
+//Version: 20151203
 
 using System;
 using System.ComponentModel;
@@ -8,6 +8,7 @@ using System.Linq;
 using System.Windows;
 
 using TrackingCam.Plugins;
+using TrackingCam.Plugins.Actions;
 using TrackingCam.Plugins.Tracking;
 using TrackingCam.Properties;
 
@@ -19,6 +20,7 @@ namespace TrackingCam
 
     #region --- Fields ---
 
+    protected IActionable actionableUbisense;
     protected ITracker trackerKinectAudio;
     protected ITracker trackerUbisense;
     protected BackgroundWorker presenterTracker;
@@ -42,6 +44,7 @@ namespace TrackingCam
     {
       Lazy<ITracker> plugin = PluginsCatalog.mefContainer.GetExports<ITracker>(protocol).FirstOrDefault(); //TODO: change this to select from app settings which tracking plugin to use instead of just using the 1st one found
       ITracker tracker = (plugin != null) ? plugin.Value : null;
+
       try
       {
         (tracker as IInitializable)?.Initialize(Settings.Default);
@@ -62,6 +65,10 @@ namespace TrackingCam
     public void LoadUbisenseTrackingPlugin()
     {
       trackerUbisense = LoadTrackingPlugin("Tracking.Ubisense");
+
+      actionableUbisense = trackerUbisense as IActionable;
+      if (actionableUbisense != null)
+        actionableUbisense.ActionOccured += ActionableUbisense_ActionOccured;
     }
 
     public void LoadTrackingPlugins()
@@ -76,7 +83,7 @@ namespace TrackingCam
     {
       if (TrackingPresenter) return; //check if already tracking the presenter and do nothing
 
-      presenterTracker = new BackgroundWorker();
+      presenterTracker = new BackgroundWorker() { WorkerSupportsCancellation = true };
       presenterTracker.DoWork += (s, e) =>
       {
         while (!e.Cancel)
@@ -91,6 +98,25 @@ namespace TrackingCam
     }
 
     #endregion
+
+    #endregion
+
+    #region --- Events ---
+
+    private void ActionableUbisense_ActionOccured(object sender, string id, string action)
+    {
+      switch (action)
+      {
+        case "1":
+          if (ptz != null)
+            ptz.ZoomLevel = 1;
+          break;
+        case "2":
+          if (ptz != null)
+            ptz.ZoomLevel = 2;
+          break;
+      }
+    }
 
     #endregion
 
