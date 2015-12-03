@@ -46,7 +46,7 @@ namespace TrackingCam
         //trackerKinectAudio
         .PositionAngle;
 
-      Debug.WriteLine(angle);
+      //Debug.WriteLine(angle);
 
       ptz.PanAngle = angle;
     }

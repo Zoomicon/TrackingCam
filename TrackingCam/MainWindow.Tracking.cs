@@ -113,7 +113,7 @@ namespace TrackingCam
           break;
         case "2":
           if (ptz != null)
-            ptz.ZoomLevel = 2;
+            ptz.ZoomLevel = 0;
           break;
       }
     }

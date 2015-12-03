@@ -123,7 +123,7 @@ namespace TrackingCam.Plugins.Tracking
 
     #region --- Events ---
 
-    public event ActionEvents.ActionableEventHandler ActionOccured;
+    public event ActionEvents.ActionOccuredEventHandler ActionOccured;
 
     private void UbisensePositioning_GetObjectsCompleted(object sender, SortedDictionary<string, UObject> objects)
     {
