@@ -1,6 +1,6 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: MainWindow.Speech.cs
-//Version: 20151202
+//Version: 20151203
 
 using System;
 using System.Windows;
@@ -9,6 +9,8 @@ using SpeechLib.Models;
 using TrackingCam.Plugins;
 using System.Linq;
 using System.IO;
+using System.Reflection;
+using SpeechLib.Recognition.KinectV1;
 
 namespace TrackingCam
 {
@@ -42,12 +44,12 @@ namespace TrackingCam
 
     public void LoadSpeechRecognitionPlugin()
     {
-      Lazy<ISpeechRecognitionKinect> plugin1 = PluginsCatalog.mefContainer.GetExports<ISpeechRecognitionKinect>("SpeechRecognitionKinect").FirstOrDefault();
+      Lazy<ISpeechRecognitionKinect> plugin1 = PluginsCatalog.mefContainer.GetExports<ISpeechRecognitionKinect>("SpeechLib.Recognition.KinectV1").FirstOrDefault();
       speechRecognition = speechRecognitionKinect = (plugin1 != null) ? plugin1.Value : null;
 
       if (speechRecognition == null) //SpeechRecognitionKinect plugin couldn't be loaded, try to fallback to the SpeechRecognition one (which uses the default audio source as input)
       {
-        Lazy<ISpeechRecognition> plugin2 = PluginsCatalog.mefContainer.GetExports<ISpeechRecognition>("SpeechRecognition").FirstOrDefault();
+        Lazy<ISpeechRecognition> plugin2 = PluginsCatalog.mefContainer.GetExports<ISpeechRecognition>("SpeechLib.Recognition").FirstOrDefault();
         speechRecognition = (plugin2 != null) ? plugin2.Value : null;
       }
 
@@ -60,28 +62,36 @@ namespace TrackingCam
       if (speechRecognition == null)
         return;
 
-      string grammarsFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Grammars", "SRGS");
-      speechRecognition.LoadGrammar(new FileStream(Path.Combine(grammarsFolder, "TrackingCam_en.xml"), FileMode.Open), "TrackingCam");
+      try
+      {
+        string grammarsFolder = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Grammars", "SRGS");
+        speechRecognition.LoadGrammar(new FileStream(Path.Combine(grammarsFolder, "TrackingCam_en.xml"), FileMode.Open), "TrackingCam");
 
-      speechRecognition.Recognized += SpeechRecognition_Recognized;
-      speechRecognition.NotRecognized += SpeechRecognition_NotRecognized;
+        speechRecognition.Recognized += SpeechRecognition_Recognized;
+        speechRecognition.NotRecognized += SpeechRecognition_NotRecognized;
 
-      /*
-      //For long recognition sessions (a few hours or more), it may be beneficial to turn off adaptation of the acoustic model.
-      //This will prevent recognition accuracy from degrading over time.
-      speechRecognition.AcousticModelAdaptation = false;
-      */
+        /*
+        //For long recognition sessions (a few hours or more), it may be beneficial to turn off adaptation of the acoustic model.
+        //This will prevent recognition accuracy from degrading over time.
+        speechRecognition.AcousticModelAdaptation = false;
+        */
 
-      if (speechRecognitionKinect != null)
-        speechRecognitionKinect.SetInputToKinectSensor(); //if it can't find a Kinect sensor that call will fallback to default audio device for input
-      else
-        speechRecognition.SetInputToDefaultAudioDevice();
+        if ((speechRecognitionKinect != null) && (KinectV1Utils.StartKinectSensor() != null))
+          speechRecognitionKinect.SetInputToKinectSensor(); //if it can't find a Kinect sensor that call will fallback to default audio device for input
+        else
+          speechRecognition.SetInputToDefaultAudioDevice();
 
-      speechRecognition.Start();
+        speechRecognition.Start();
+      }
+      catch(Exception e)
+      {
+        speechRecognitionKinect = null;
+        speechRecognition = null;
+        MessageBox.Show(e.Message);
+      }
     }
 
     #endregion
-
 
     #region --- Events ---
 

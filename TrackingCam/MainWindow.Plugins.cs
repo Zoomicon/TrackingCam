@@ -1,6 +1,6 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: MainWindow.Plugins.cs
-//Version: 20151202
+//Version: 20151203
 
 using System;
 using System.Windows;
@@ -11,6 +11,10 @@ namespace TrackingCam
   public partial class MainWindow : Window
   {
     #region --- Methods ---
+
+    static MainWindow()
+    {
+    }
 
     public void LoadPlugins()
     {

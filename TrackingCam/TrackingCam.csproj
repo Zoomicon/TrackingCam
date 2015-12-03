@@ -48,6 +48,7 @@
       <HintPath>..\packages\ZUI.1.0.6\lib\net40-client\FloatingWindowZUI.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Kinect, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
     <Reference Include="SilverFlow.Controls, Version=3.0.5812.29325, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ZUI.1.0.6\lib\net40-client\SilverFlow.Controls.dll</HintPath>
       <Private>True</Private>
@@ -184,7 +185,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Grammars\SRGS\TrackingCam_en.xml" />
+    <Content Include="Grammars\SRGS\TrackingCam_en.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="LibVlc\libvlc.dll">

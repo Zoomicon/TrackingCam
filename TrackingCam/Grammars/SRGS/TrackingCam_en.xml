@@ -1,7 +1,7 @@
 ﻿<!--
 Project: TrackingCam (http://TrackingCam.codeplex.com)
 Filename: TrackingCam_en.xml
-Version: 20151202
+Version: 20151203
 -->
 
 <grammar
@@ -24,6 +24,7 @@ Version: 20151202
         <tag>out="ZOOM_IN"</tag>
         <one-of>
           <item> zoom </item>
+          <item> zoom in </item>
         </one-of>
       </item>
 
@@ -31,12 +32,14 @@ Version: 20151202
         <tag>out="ZOOM_OUT"</tag>
         <one-of>
           <item> unzoom </item>
+          <item> zoom out </item>
         </one-of>
       </item>
 
       <item>
         <tag>out="TRACK_ON"</tag>
         <one-of>
+          <item> start </item>
           <item> track </item>
         </one-of>
       </item>
@@ -44,7 +47,7 @@ Version: 20151202
       <item>
         <tag>out="TRACK_OFF"</tag>
         <one-of>
-          <item> don't track </item>
+          <item> stop </item>
         </one-of>
       </item>
 
