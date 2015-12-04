@@ -3,7 +3,7 @@
 //Version: 20151203
 
 using System;
-//using System.Diagnostics;
+/**/using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 
@@ -41,7 +41,7 @@ namespace TrackingCam
 
     public void LookTo(double angle)
     {
-      //Debug.WriteLine("LookTo: " + angle);
+      /**/Debug.WriteLine("LookTo: " + angle);
       ptz.PanAngle = angle;
     }
 

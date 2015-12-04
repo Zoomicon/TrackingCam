@@ -1,11 +1,14 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: MainWindow.xaml.cs
-//Version: 20151203
+//Version: 20151204
 
 //using SilverFlow.Controls;
 using System;
 using System.Windows;
-using System.Windows.Controls;
+//using System.Windows.Controls;
+
+using SilverFlow.Controls;
+
 using TrackingCam.Plugins;
 using TrackingCam.Plugins.Video;
 
@@ -16,6 +19,12 @@ namespace TrackingCam
   /// </summary>
   public partial class MainWindow : Window
   {
+
+    #region --- Constants ---
+
+    public const string SPEECH_GREETING = "You can use speech commands Track, Stop, Zoom and Unzoom";
+
+    #endregion
 
     #region --- Initialization ---
 
@@ -50,6 +59,7 @@ namespace TrackingCam
 
     #region --- Methods ---
 
+    /* //TEMP FIX
     public void AddDisplay(UIElement display, string title = "", Rect? bounds = null) //TODO: REMOVE TEMP FIX
     {
       FrameworkElement f = (display as FrameworkElement);
@@ -64,8 +74,8 @@ namespace TrackingCam
 
       canvas.Children.Add(f);
     }
+    */
 
-/*
     public void AddDisplay(UIElement display, string title="", Rect? bounds = null)
     {
       FloatingWindow window = new FloatingWindow()
@@ -82,13 +92,10 @@ namespace TrackingCam
         window.Width = bounds.Value.Width;
         window.Height = bounds.Value.Height;
         window.Show(bounds.Value.TopLeft.X, bounds.Value.TopLeft.X);
-        window.MoveEnabled = false; //TODO: change this when WPF FloatingWindow moving is fixed at ZUI NuGet package
-        window.ResizeEnabled = false; //TODO: change this when WPF FloatingWindow resizing is fixed at ZUI NuGet package
       }
       else
         window.Show(100, 100);
     }
- */
 
     public void AddDisplayable(IDisplayable displayable, string title="", Rect? bounds = null)
     {
@@ -117,7 +124,7 @@ namespace TrackingCam
     {
       InitializeUI();
       if (ptz != null)
-        speechSynthesis?.Speak("You can use speech commands Track, Don't Track, Zoom and Unzoom");
+        speechSynthesis?.Speak(SPEECH_GREETING);
 
       TrackingPresenter = true; //start tracking the presenter
     }

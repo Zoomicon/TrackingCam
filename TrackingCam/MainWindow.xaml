@@ -1,7 +1,7 @@
 ﻿<!--
 Project: TrackingCam (http://TrackingCam.codeplex.com)
 File: MainWindow.xaml
-Version: 20151201
+Version: 20151204
 -->
 
 <Window
@@ -10,7 +10,7 @@ Version: 20151201
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-  xmlns:float="clr-namespace:FloatingWindowZUI;assembly=FloatingWindowZUI"
+  xmlns:float="clr-namespace:SilverFlow.Controls;assembly=SilverFlow.Controls"
   mc:Ignorable="d"
 
   Width="525" Height="350"
@@ -33,30 +33,24 @@ Version: 20151201
 
   <Grid x:Name="layout">
 
-    <!-- TODO: REMOVE TEMP FIX -->
+    <!-- TEMP FIX
     <Viewbox Stretch="Uniform" Grid.Row="0">
       <Canvas x:Name="canvas" Width="1000" Height="750"/>
     </Viewbox>
+    -->
 
-    <!--
-
-    <float:FloatingWindowHostZUI
+    <float:FloatingWindowHost
         x:Name="host" Grid.Row="0" MinWidth="100"
         SnapinEnabled="{Binding ElementName=cbxEnableSnapin, Path=IsChecked}"
         SnapinDistance="{Binding ElementName=txtSnapinDistance, Path=Text}"
         SnapinMargin="{Binding ElementName=txtSnapinMargin, Path=Text}"
         ShowMinimizedOnlyInIconbar="{Binding ElementName=cbxShowMinimized, Path=IsChecked}"
-        ContentScale="1.0"
-        MinContentScale="0.1"
-        MaxContentScale="3.0"
         Background="{StaticResource HostBackground}"
         >
-      <float:FloatingWindowHostZUI.Bar>
+      <float:FloatingWindowHost.Bar>
         <TextBlock Text="Hellenic Open University, Zoomicon" VerticalAlignment="Center" />
-      </float:FloatingWindowHostZUI.Bar>
-    </float:FloatingWindowHostZUI>
-
-    -->
+      </float:FloatingWindowHost.Bar>
+    </float:FloatingWindowHost>
 
   </Grid>
 

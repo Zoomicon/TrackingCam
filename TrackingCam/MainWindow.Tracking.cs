@@ -103,9 +103,9 @@ namespace TrackingCam
         while (!e.Cancel)
         {
           double angle =
-            //trackerKinectAudio
+            /**/trackerKinectAudio
             //trackerKinectVideo
-            trackerUbisense
+            //trackerUbisense
               .PositionAngle;
           LookTo(angle); //look to presenter
         }
@@ -135,6 +135,14 @@ namespace TrackingCam
         case "ZoomOut":
           if (ptz != null)
             ptz.ZoomLevel = 0;
+          break;
+        case "SwipeLeft":
+          if (ptz != null)
+            ptz.PanAngle -= 10;
+          break;
+        case "SwipeRight":
+          if (ptz != null)
+            ptz.PanAngle += 10;
           break;
       }
     }
