@@ -34,17 +34,17 @@ Version: 20151204
   <Grid x:Name="layout">
 
     <!-- TEMP FIX
-    <Viewbox Stretch="Uniform" Grid.Row="0">
+    <Viewbox Stretch="Uniform">
       <Canvas x:Name="canvas" Width="1000" Height="750"/>
     </Viewbox>
     -->
 
     <float:FloatingWindowHost
-        x:Name="host" Grid.Row="0" MinWidth="100"
-        SnapinEnabled="{Binding ElementName=cbxEnableSnapin, Path=IsChecked}"
-        SnapinDistance="{Binding ElementName=txtSnapinDistance, Path=Text}"
-        SnapinMargin="{Binding ElementName=txtSnapinMargin, Path=Text}"
-        ShowMinimizedOnlyInIconbar="{Binding ElementName=cbxShowMinimized, Path=IsChecked}"
+        x:Name="host"
+        SnapinEnabled="True"
+        SnapinDistance="10"
+        SnapinMargin="5"
+        ShowMinimizedOnlyInIconbar="True"
         Background="{StaticResource HostBackground}"
         >
       <float:FloatingWindowHost.Bar>

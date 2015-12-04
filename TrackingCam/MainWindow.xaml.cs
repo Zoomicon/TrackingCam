@@ -40,10 +40,11 @@ namespace TrackingCam
       AddDisplayable(videoFoscam, "Video - Foscam IP Camera", new Rect(0, 0, 600, 600)); //IVideo interface extends from IDisplayable
       //AddDisplayable(videoKinect, "Video - Kinect Color Camera", new Rect(0, 600, 1000, 150)); //IVideo interface extends from IDisplayable
 
-      AddDisplayable(ptz as IDisplayable, "PTZ - Foscam IP Camera", new Rect(600, 200, 200, 200)); //AddDisplayable will ignore the call if null (that is if the tracker isn't an IDisplayable)
-      AddDisplayable(trackerKinectAudio as IDisplayable, "Tracking - Kinect Microphone Array", new Rect(800, 200, 200, 200)); //AddDisplayable will ignore the call if null (that is if the tracker isn't an IDisplayable)
-      AddDisplayable(trackerKinectDepth as IDisplayable, "Tracking - Kinect Depth", new Rect(600, 400, 400, 350));
-      AddDisplayable(trackerUbisense as IDisplayable, "Tracking - Kinect Microphone Array", new Rect(600, 0, 400, 200)); //AddDisplayable will ignore the call if null (that is if the tracker isn't an IDisplayable)
+      AddDisplayable(ptz as IDisplayable, "PTZ - Foscam IP Camera", new Rect(600, 400, 200, 200)); //AddDisplayable will ignore the call if null (that is if the tracker isn't an IDisplayable)
+
+      AddDisplayable(trackerKinectAudio as IDisplayable, "Tracking - Kinect Microphone Array", new Rect(600, 200, 200, 200)); //AddDisplayable will ignore the call if null (that is if the tracker isn't an IDisplayable)
+      AddDisplayable(trackerKinectDepth as IDisplayable, "Tracking - Kinect Depth", new Rect(800, 200, 400, 400));
+      AddDisplayable(trackerUbisense as IDisplayable, "Tracking - Ubisense", new Rect(600, 0, 450, 200)); //AddDisplayable will ignore the call if null (that is if the tracker isn't an IDisplayable)
     }
 
     #endregion
@@ -91,7 +92,7 @@ namespace TrackingCam
       {
         window.Width = bounds.Value.Width;
         window.Height = bounds.Value.Height;
-        window.Show(bounds.Value.TopLeft.X, bounds.Value.TopLeft.X);
+        window.Show(bounds.Value.TopLeft.X, bounds.Value.TopLeft.Y);
       }
       else
         window.Show(100, 100);
