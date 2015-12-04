@@ -30,10 +30,10 @@
       <Value Profile="(Default)">10</Value>
     </Setting>
     <Setting Name="PTZ_MinPanAngle" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">-45</Value>
+      <Value Profile="(Default)">-25</Value>
     </Setting>
     <Setting Name="PTZ_MaxPanAngle" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">45</Value>
+      <Value Profile="(Default)">25</Value>
     </Setting>
     <Setting Name="Tracking_CameraY" Type="System.Double" Scope="User">
       <Value Profile="(Default)">6.20297193527222</Value>

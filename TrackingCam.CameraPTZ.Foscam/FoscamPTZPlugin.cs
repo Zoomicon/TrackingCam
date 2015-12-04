@@ -120,7 +120,7 @@ namespace TrackingCam.Plugins.PTZ
       get
       {
         int presetNum = (int)((_maxPanAngle - _minPanAngle) / (_panAngle - _minPanAngle)  / (double)_presetCount);
-        return _presetPrefix + ((int)_panAngle);
+        return _presetPrefix + presetNum;
       }
     }
 

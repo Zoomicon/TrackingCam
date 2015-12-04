@@ -133,7 +133,7 @@ namespace TrackingCam.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("-45")]
+        [global::System.Configuration.DefaultSettingValueAttribute("-25")]
         public double PTZ_MinPanAngle {
             get {
                 return ((double)(this["PTZ_MinPanAngle"]));
@@ -145,7 +145,7 @@ namespace TrackingCam.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("45")]
+        [global::System.Configuration.DefaultSettingValueAttribute("25")]
         public double PTZ_MaxPanAngle {
             get {
                 return ((double)(this["PTZ_MaxPanAngle"]));
