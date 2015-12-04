@@ -1,6 +1,6 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: FoscamVideoPlugin.cs
-//Version: 20151127
+//Version: 20151204
 
 using Camera;
 using Camera.Foscam;
@@ -24,6 +24,20 @@ namespace TrackingCam.Plugins.Video
 
     public const string SETTING_CAMERA_FOSCAM_HD = "FoscamHD";
     public const string SETTING_CAMERA_FOSCAM_MJPEG = "FoscamMJPEG";
+
+    public readonly string[] DEFAULT_VLC_OPTIONS = new string[]
+    {
+      "-I dummy",
+      "--ignore-config",
+      "--no-video-title",
+      "--file-logging",
+      "--logfile=log.txt",
+      "--verbose=2",
+      "--no-sub-autodetect-file",
+      //"--rtsp-tcp", //needed to pass RTSP through a VPN
+      //"--rtsp-frame-buffer-size=500000", //needed to avoid Live555 error when using --rtsp-tcp (RTCPInstance error: Hit limit when reading incoming packet over TCP. Increase "maxRTCPPacketSize")
+      "--network-caching=500" //caching value for network resources in msec (needed for low frame lag - if broken frames need to increase it)
+    };
 
     protected const FoscamCameraType DEFAULT_CAMERA_TYPE = FoscamCameraType.FoscamHD;
     protected const string DEFAULT_USERNAME = "admin";
@@ -70,7 +84,7 @@ namespace TrackingCam.Plugins.Video
       string password = (string)settings[VideoSettings.SETTING_CAMERA_PASSWORD] ?? DEFAULT_PASSWORD;
 
       //Create video controller
-      _video = FoscamVideo.CreateFoscamVideoController(cameraType, url, username, password);
+      _video = FoscamVideo.CreateFoscamVideoController(cameraType, url, username, password, DEFAULT_VLC_OPTIONS);
     }
 
     #endregion
