@@ -104,10 +104,10 @@ namespace TrackingCam
         {
           ITracker tracker = null;
 
-          if (trackerKinectAudio != null)
-            tracker = trackerKinectAudio;
-          else if (trackerKinectDepth != null)
+          if (trackerKinectDepth != null)
             tracker = trackerKinectDepth;
+          else if (trackerKinectAudio != null)
+            tracker = trackerKinectAudio;
           else if (trackerUbisense != null)
             tracker = trackerUbisense;
 

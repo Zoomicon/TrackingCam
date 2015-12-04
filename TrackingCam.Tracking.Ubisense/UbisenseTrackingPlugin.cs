@@ -1,6 +1,6 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: UbisenseTrackingPlugin.cs
-//Version: 20151203
+//Version: 20151204
 
 using System;
 using System.Collections.Generic;
@@ -98,7 +98,7 @@ namespace TrackingCam.Plugins.Tracking
       get
       {
         Position? pos = _positioning.Positioning.GetPosition();
-        return (pos.HasValue) ? pos.Value.P.Y : 0;
+        return (pos.HasValue) ? pos.Value.P.Z : 0;
       }
     }
 
@@ -107,7 +107,7 @@ namespace TrackingCam.Plugins.Tracking
       get
       {
         Position? pos = _positioning.Positioning.GetPosition();
-        return (pos.HasValue) ? pos.Value.P.Z : 0;
+        return (pos.HasValue) ? pos.Value.P.Y : 0;
       }
     }
 
@@ -115,7 +115,7 @@ namespace TrackingCam.Plugins.Tracking
     {
       get
       {
-        return Math.Atan2(PositionHorizontal - _cameraX, PositionVertical - _cameraY);
+        return Math.Atan2(PositionHorizontal - _cameraX, PositionDepth - _cameraZ);
       }
     }
 

@@ -34,7 +34,8 @@ namespace TrackingCam.Plugins.Tracking
 
     protected KinectSensor _kinectSensor;
     protected KinectViewer _kinectViewer;
-    private GestureController _gestureController;
+    protected GestureController _gestureController;
+    protected SkeletonPoint position; //= new SkeletonPoint() { X = 0, Y = 0, Z = 0 };
 
     #endregion
 
@@ -90,7 +91,7 @@ namespace TrackingCam.Plugins.Tracking
     {
       get
       {
-        return 0;
+        return position.X;
       }
     }
 
@@ -98,7 +99,7 @@ namespace TrackingCam.Plugins.Tracking
     {
       get
       {
-        return 0;
+        return position.Y;
       }
     }
 
@@ -106,7 +107,7 @@ namespace TrackingCam.Plugins.Tracking
     {
       get
       {
-        return 0;
+        return position.Z;
       }
     }
 
@@ -114,8 +115,17 @@ namespace TrackingCam.Plugins.Tracking
     {
       get
       {
-        return 0;
+        return RadToDeg(Math.Atan2(PositionHorizontal, PositionDepth));
       }
+    }
+
+    #endregion
+
+    #region --- Methods ---
+
+    public static double RadToDeg(double radians)
+    {
+      return radians * (180 / Math.PI);
     }
 
     #endregion
@@ -152,6 +162,8 @@ namespace TrackingCam.Plugins.Tracking
               // Draw skeleton
               if (_kinectViewer != null)
                 _kinectViewer.DrawBody(skeleton);
+
+              position = skeleton.Position;
             }
         }
     }
