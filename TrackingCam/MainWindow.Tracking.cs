@@ -70,8 +70,6 @@ namespace TrackingCam
     {
       trackerKinectDepth = LoadTrackingPlugin("Tracking.KinectV1Depth");
 
-      ((FrameworkElement)(trackerKinectDepth as IDisplayable)?.Display).FlowDirection = FlowDirection.RightToLeft; //flip display horizontally
-
       actionableKinectGestures = trackerKinectDepth as IActionable;
       if (actionableKinectGestures != null)
         actionableKinectGestures.ActionOccured += ActionableKinectGestures_ActionOccured;

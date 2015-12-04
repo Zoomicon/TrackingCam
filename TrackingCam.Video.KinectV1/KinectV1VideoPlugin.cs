@@ -1,6 +1,6 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: KinectV1VideoPlugin.cs
-//Version: 20151203
+//Version: 20151204
 
 //TODO: maybe implement IDisposable
 
@@ -67,7 +67,10 @@ namespace TrackingCam.Plugins.Video
         if (_kinectViewer == null)
           try
           {
-            _kinectViewer = new KinectViewer() { FrameType = VisualizationMode.Color }; //TODO: see what throws exception here when Kinect is disconnected and fix to have better message
+            _kinectViewer = new KinectViewer() {
+              FrameType = VisualizationMode.Color,
+              FlippedHorizontally = true
+            }; //TODO: see what throws exception here when Kinect is disconnected and fix to have better message
           }
           catch (Exception e)
           {

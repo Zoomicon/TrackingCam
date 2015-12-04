@@ -44,7 +44,6 @@ namespace TrackingCam
     public void LoadKinectVideoPlugin()
     {
       videoKinect = LoadVideoPlugin("Video.KinectV1");
-      ((FrameworkElement)(videoKinect as IDisplayable)?.Display).FlowDirection = FlowDirection.RightToLeft; //flip display horizontally
     }
 
     public void LoadFoscamVideoPlugin()
