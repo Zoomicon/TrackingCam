@@ -42,7 +42,8 @@ namespace TrackingCam
     public void LookTo(double angle)
     {
       /**/Debug.WriteLine("LookTo: " + angle);
-      ptz.PanAngle = angle;
+      if (ptz!= null)
+        ptz.PanAngle = angle;
     }
 
     #endregion

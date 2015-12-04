@@ -1,7 +1,8 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: KinectAudioTrackingPlugin.cs
-//Version: 20151203
+//Version: 20151204
 
+using KinectAudioPositioning;
 using KinectAudioPositioning.WPF;
 
 using System;
@@ -70,7 +71,10 @@ namespace TrackingCam.Plugins.Tracking
 
     public double PositionAngle
     {
-      get { return _positioning.KinectMicArray.BeamAngle;  }
+      get {
+        KinectMicArray micArray = _positioning.KinectMicArray;
+        return (micArray != null)? micArray.BeamAngle : 0;
+      }
     }
 
     #endregion

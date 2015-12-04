@@ -1,6 +1,6 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: MainWindow.Video.cs
-//Version: 20151203
+//Version: 20151204
 
 using System;
 using System.Linq;
@@ -44,6 +44,7 @@ namespace TrackingCam
     public void LoadKinectVideoPlugin()
     {
       videoKinect = LoadVideoPlugin("Video.KinectV1");
+      ((FrameworkElement)(videoKinect as IDisplayable)?.Display).FlowDirection = FlowDirection.RightToLeft; //flip display horizontally
     }
 
     public void LoadFoscamVideoPlugin()

@@ -53,6 +53,7 @@ namespace TrackingCam
 
     public void Cleanup()
     {
+      StopTrackingPresenter();
       UnloadPlugins();
     }
 

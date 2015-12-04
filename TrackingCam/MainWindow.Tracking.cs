@@ -1,6 +1,6 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: MainWindow.Tracking.cs
-//Version: 20151203
+//Version: 20151204
 
 using System;
 using System.ComponentModel;
@@ -70,6 +70,8 @@ namespace TrackingCam
     {
       trackerKinectDepth = LoadTrackingPlugin("Tracking.KinectV1Depth");
 
+      ((FrameworkElement)(trackerKinectDepth as IDisplayable)?.Display).FlowDirection = FlowDirection.RightToLeft; //flip display horizontally
+
       actionableKinectGestures = trackerKinectDepth as IActionable;
       if (actionableKinectGestures != null)
         actionableKinectGestures.ActionOccured += ActionableKinectGestures_ActionOccured;
@@ -102,12 +104,17 @@ namespace TrackingCam
       {
         while (!e.Cancel)
         {
-          double angle =
-            /**/trackerKinectAudio
-            //trackerKinectVideo
-            //trackerUbisense
-              .PositionAngle;
-          LookTo(angle); //look to presenter
+          ITracker tracker = null;
+
+          if (trackerKinectAudio != null)
+            tracker = trackerKinectAudio;
+          else if (trackerKinectDepth != null)
+            tracker = trackerKinectDepth;
+          else if (trackerUbisense != null)
+            tracker = trackerUbisense;
+
+          if (tracker != null)
+            LookTo(tracker.PositionAngle); //look to presenter
         }
       };
       presenterTracker.RunWorkerAsync();
