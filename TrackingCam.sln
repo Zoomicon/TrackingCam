@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CC72F005-C9BE-4320-9490-B27022E42739}"
 	ProjectSection(SolutionItems) = preProject
@@ -30,6 +30,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{59AD61
 		.nuget\NuGet.Config = .nuget\NuGet.Config
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Diagrams", "Diagrams", "{D5C621F1-2C5A-4B6E-9258-A155740C8FE8}"
+	ProjectSection(SolutionItems) = preProject
+		TrackingCam\TrackingCam.cd = TrackingCam\TrackingCam.cd
+		TrackingCam.Plugins\TrackingCam.Plugins.cd = TrackingCam.Plugins\TrackingCam.Plugins.cd
+		TrackingCam.CameraPTZ.Foscam\TrackingCam.PTZ.Foscam.cd = TrackingCam.CameraPTZ.Foscam\TrackingCam.PTZ.Foscam.cd
+		TrackingCam.Tracking.KinectAudio\TrackingCam.Tracking.KinectAudio.cd = TrackingCam.Tracking.KinectAudio\TrackingCam.Tracking.KinectAudio.cd
+		TrackingCam.Tracking.KinectDepth\TrackingCam.Tracking.KinectDepth.cd = TrackingCam.Tracking.KinectDepth\TrackingCam.Tracking.KinectDepth.cd
+		TrackingCam.Tracking.Ubisense\TrackingCam.Tracking.Ubisense.cd = TrackingCam.Tracking.Ubisense\TrackingCam.Tracking.Ubisense.cd
+		TrackingCam.Video.Foscam\TrackingCam.Video.Foscam.cd = TrackingCam.Video.Foscam\TrackingCam.Video.Foscam.cd
+		TrackingCam.Video.KinectV1\TrackingCam.Video.KinectV1.cd = TrackingCam.Video.KinectV1\TrackingCam.Video.KinectV1.cd
 	EndProjectSection
 EndProject
 Global
