@@ -140,6 +140,7 @@
     </EmbeddedResource>
     <Compile Include="MainWindow.Video.cs" />
     <None Include="app.config" />
+    <None Include="TrackingCam.cd" />
     <None Include="LibVlc\plugins\plugins.dat">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TrackingCam.Plugins.Actions.ActionEvents">
+    <Position X="7.75" Y="0.5" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Delegate Name="TrackingCam.Plugins.Actions.ActionEvents.ActionOccuredEventHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ActionEvents.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ActionEvents.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrackingCam.Plugins.PluginsCatalog">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>PluginsCatalog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrackingCam.Plugins.PTZ.PTZSettings">
+    <Position X="7.75" Y="3" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABAACAIAAAAQAAAAhAAAAAAAQ=</HashCode>
+      <FileName>PTZSettings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrackingCam.Plugins.Tracking.TrackingSettings">
+    <Position X="5" Y="3.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQADgAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>TrackingSettings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrackingCam.Plugins.Video.VideoSettings">
+    <Position X="2.25" Y="3.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAhAAAAAAAQ=</HashCode>
+      <FileName>VideoSettings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="TrackingCam.Plugins.Actions.IActionable">
+    <Position X="5.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IActionable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TrackingCam.Plugins.IDisplayable">
+    <Position X="0.5" Y="1.75" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IDisplayable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TrackingCam.Plugins.IInitializable">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IInitializable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TrackingCam.Plugins.PTZ.IPTZ">
+    <Position X="5.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAAAAAAgAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IPTZ.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TrackingCam.Plugins.Tracking.ITracker">
+    <Position X="3.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAAAAAAEAQQAAAAAAAAAAAA=</HashCode>
+      <FileName>ITracker.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TrackingCam.Plugins.Video.IVideo">
+    <Position X="2.25" Y="0.5" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAACAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>IVideo.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
