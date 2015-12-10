@@ -52,9 +52,9 @@ namespace TrackingCam
 
       windowPTZFoscam = AddDisplayable(ptzFoscam as IDisplayable, "PTZ - Foscam IP Camera", new Rect(600, 400, 200, 200)); //AddDisplayable will ignore the call if null (that is if the tracker isn't an IDisplayable)
 
-      windowTrackerKinectAudio = AddDisplayable(trackerKinectAudio as IDisplayable, "Tracking - Kinect Microphone Array", new Rect(600, 200, 200, 200)); //AddDisplayable will ignore the call if null (that is if the tracker isn't an IDisplayable)
-      windowTrackerKinectDepth = AddDisplayable(trackerKinectDepth as IDisplayable, "Tracking - Kinect Depth", new Rect(800, 200, 400, 400));
-      windowTrackerUbisense = AddDisplayable(trackerUbisense as IDisplayable, "Tracking - Ubisense", new Rect(600, 0, 450, 200)); //AddDisplayable will ignore the call if null (that is if the tracker isn't an IDisplayable)
+      windowTrackerKinectAudio = AddDisplayable(trackerKinectAudio as IDisplayable, "Tracking - Kinect Microphone Array", new Rect(600, 200, 200, 200), false); //AddDisplayable will ignore the call if null (that is if the tracker isn't an IDisplayable)
+      windowTrackerKinectDepth = AddDisplayable(trackerKinectDepth as IDisplayable, "Tracking - Kinect Depth", new Rect(800, 200, 400, 400), false);
+      windowTrackerUbisense = AddDisplayable(trackerUbisense as IDisplayable, "Tracking - Ubisense", new Rect(600, 0, 450, 200), false); //AddDisplayable will ignore the call if null (that is if the tracker isn't an IDisplayable)
     }
 
     #endregion
@@ -93,14 +93,14 @@ namespace TrackingCam
 
     #region Windows
 
-    public FloatingWindow AddDisplay(UIElement display, string title="", Rect? bounds = null, bool visible = true)
+    public FloatingWindow AddDisplay(UIElement display, string title="", Rect? bounds = null, bool visible = true, object tag = null)
     {
       FloatingWindow window = new FloatingWindow()
       {
         Content = display,
+        Tag = tag,
         Title = title,
-        IconText = title,
-        Visibility = visible ? Visibility.Visible : Visibility.Hidden
+        IconText = title
       };
 
       host.Add(window);
@@ -114,17 +114,20 @@ namespace TrackingCam
       else
         window.Show(100, 100);
 
+      if (!visible)
+        window.MinimizeWindow();
+
       return window;
     }
 
-    public FloatingWindow AddDisplayable(IDisplayable displayable, string title="", Rect? bounds = null, bool visible = true)
+    public FloatingWindow AddDisplayable(IDisplayable displayable, string title="", Rect? bounds = null, bool visible = true, object tag = null)
     {
       if (displayable == null) return null;
 
       UIElement display = displayable.Display;
       if (display == null) return null;
 
-      FloatingWindow window = AddDisplay(display, title, bounds, visible);
+      FloatingWindow window = AddDisplay(display, title, bounds, visible, tag ?? displayable);
       try
       {
         (displayable as IVideo)?.Start();
@@ -134,6 +137,13 @@ namespace TrackingCam
         MessageBox.Show((e.InnerException ?? e).Message);
       }
       return window;
+    }
+
+    public FloatingWindow FindWindow(IDisplayable displayable)
+    {
+      foreach (FloatingWindow w in host.FloatingWindows)
+        if (w.Tag == displayable) return w;
+      return null;
     }
 
     #endregion

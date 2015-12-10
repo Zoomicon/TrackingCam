@@ -48,7 +48,7 @@
     </Reference>
     <Reference Include="Microsoft.Kinect, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
     <Reference Include="SilverFlow.Controls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ZUI.0.2.2\lib\net40\SilverFlow.Controls.dll</HintPath>
+      <HintPath>..\packages\ZUI.0.2.3\lib\net40\SilverFlow.Controls.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="SpeechLib.Models, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">

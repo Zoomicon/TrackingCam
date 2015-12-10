@@ -2,6 +2,7 @@
 //File: MainWindow.Tracking.cs
 //Version: 20151210
 
+using SilverFlow.Controls;
 using System;
 using System.ComponentModel;
 using System.Linq;
@@ -147,6 +148,13 @@ namespace TrackingCam
         default:
           tracker = null;
           break;
+      }
+
+      FloatingWindow trackerWindow = FindWindow(tracker as IDisplayable);
+      if (trackerWindow != null)
+      {
+        trackerWindow.RestoreWindow();
+        trackerWindow.BringIntoView(); //TODO: does this work if a zoomable container is used?
       }
     }
 
