@@ -48,23 +48,23 @@
     </Reference>
     <Reference Include="Microsoft.Kinect, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
     <Reference Include="SilverFlow.Controls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ZUI.0.2.1\lib\net40\SilverFlow.Controls.dll</HintPath>
+      <HintPath>..\packages\ZUI.0.2.2\lib\net40\SilverFlow.Controls.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="SpeechLib.Models, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SpeechLib.Models.1.0.0\lib\net40\SpeechLib.Models.dll</HintPath>
+      <HintPath>..\packages\SpeechLib.Models.1.6.0\lib\net40\SpeechLib.Models.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="SpeechLib.Recognition, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SpeechLib.Recognition.1.0.0\lib\net40\SpeechLib.Recognition.dll</HintPath>
+      <HintPath>..\packages\SpeechLib.Recognition.1.6.0\lib\net40\SpeechLib.Recognition.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="SpeechLib.Recognition.KinectV1, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SpeechLib.Recognition.KinectV1.1.0.0\lib\net40\SpeechLib.Recognition.KinectV1.dll</HintPath>
+      <HintPath>..\packages\SpeechLib.Recognition.KinectV1.1.6.0\lib\net40\SpeechLib.Recognition.KinectV1.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="SpeechLib.Synthesis, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SpeechLib.Synthesis.1.0.0\lib\net40\SpeechLib.Synthesis.dll</HintPath>
+      <HintPath>..\packages\SpeechLib.Synthesis.1.6.0\lib\net40\SpeechLib.Synthesis.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
