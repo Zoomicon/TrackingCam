@@ -1,7 +1,7 @@
 ﻿<!--
 Project: TrackingCam (http://TrackingCam.codeplex.com)
 File: MainWindow.xaml
-Version: 20151204
+Version: 20151210
 -->
 
 <Window
@@ -11,6 +11,7 @@ Version: 20151204
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:float="clr-namespace:SilverFlow.Controls;assembly=SilverFlow.Controls"
+  xmlns:properties="clr-namespace:TrackingCam.Properties"
   mc:Ignorable="d"
 
   Width="525" Height="350"
@@ -29,9 +30,15 @@ Version: 20151204
       <GradientStop Color="#FF00AEEF" Offset="0" />
       <GradientStop Color="#FF89E0FF" Offset="1" />
     </LinearGradientBrush>
+
+    <Style TargetType="Label">
+      <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <properties:Settings x:Key="settings" />
   </Window.Resources>
 
-  <Grid x:Name="layout">
+  <Grid x:Name="layout" DataContext="{StaticResource settings}">
 
     <!-- TEMP FIX
     <Viewbox Stretch="Uniform">
@@ -48,7 +55,32 @@ Version: 20151204
         Background="{StaticResource HostBackground}"
         >
       <float:FloatingWindowHost.Bar>
-        <TextBlock Text="Hellenic Open University, Zoomicon" VerticalAlignment="Center" />
+        <StackPanel
+          Orientation="Horizontal"
+          >
+
+          <Label Content="Tracking Presenter" Target="{Binding ElementName=cbTrackingPresenter}" />
+          <CheckBox
+            x:Name="cbTrackingPresenter"
+            VerticalAlignment="Center"
+            IsChecked="{Binding Path=Default.TrackingPresenter, Mode=TwoWay}"
+            Checked="cbTrackingPresenter_Checked"
+            />
+
+          <Label Content="Tracker:" Target="{Binding ElementName=comboTracker}" />
+          <ComboBox
+            x:Name="comboTracker"
+            SelectedValue="{Binding Path=Default.Tracker, Mode=TwoWay}"
+            SelectedValuePath="Tag"
+            >
+            <ComboBoxItem Tag="KinectDepth">Kinect Depth</ComboBoxItem>
+            <ComboBoxItem Tag="KinectAudio">Kinect Audio</ComboBoxItem>
+            <ComboBoxItem Tag="Ubisense">Ubisense</ComboBoxItem>
+          </ComboBox>
+
+          <TextBlock Text=" - Hellenic Open University, Zoomicon" />
+
+        </StackPanel>
       </float:FloatingWindowHost.Bar>
     </float:FloatingWindowHost>
 

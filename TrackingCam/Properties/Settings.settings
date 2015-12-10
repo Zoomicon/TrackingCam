@@ -41,5 +41,11 @@
     <Setting Name="Tracking_CameraZ" Type="System.Double" Scope="User">
       <Value Profile="(Default)">-0.714946579840356</Value>
     </Setting>
+    <Setting Name="TrackingPresenter" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Tracker" Type="System.String" Scope="User">
+      <Value Profile="(Default)">KinectDepth</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

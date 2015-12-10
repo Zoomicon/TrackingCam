@@ -178,5 +178,29 @@ namespace TrackingCam.Properties {
                 this["Tracking_CameraZ"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool TrackingPresenter {
+            get {
+                return ((bool)(this["TrackingPresenter"]));
+            }
+            set {
+                this["TrackingPresenter"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("KinectDepth")]
+        public string Tracker {
+            get {
+                return ((string)(this["Tracker"]));
+            }
+            set {
+                this["Tracker"] = value;
+            }
+        }
     }
 }

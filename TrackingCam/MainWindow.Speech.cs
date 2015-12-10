@@ -104,10 +104,10 @@ namespace TrackingCam
               ptz.ZoomLevel = 0;
             break;
           case Commands.TRACK_ON:
-            StartTrackingPresenter();
+            TrackingPresenter = true;
             break;
           case Commands.TRACK_OFF:
-            StopTrackingPresenter();
+            TrackingPresenter = false;
             break;
         }
     }

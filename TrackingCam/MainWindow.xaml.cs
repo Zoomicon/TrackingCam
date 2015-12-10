@@ -1,6 +1,6 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: MainWindow.xaml.cs
-//Version: 20151204
+//Version: 20151210
 
 //using SilverFlow.Controls;
 using System;
@@ -11,6 +11,7 @@ using SilverFlow.Controls;
 
 using TrackingCam.Plugins;
 using TrackingCam.Plugins.Video;
+using TrackingCam.Properties;
 
 namespace TrackingCam
 {
@@ -33,6 +34,7 @@ namespace TrackingCam
       InitializeComponent();
       PluginsCatalog.Init(this);
       LoadPlugins();
+      Settings.Default.PropertyChanged += Settings_PropertyChanged;
     }
 
     public void InitializeUI()
@@ -53,13 +55,27 @@ namespace TrackingCam
 
     public void Cleanup()
     {
-      StopTrackingPresenter();
+      TrackingPresenter = false;
       UnloadPlugins();
     }
 
     #endregion
 
     #region --- Methods ---
+
+    #region Settings
+
+    public void ReloadSettings()
+    {
+      Settings.Default.Reload();
+    }
+
+    public void SaveSettings()
+    {
+      Settings.Default.Save();
+    }
+
+    #endregion
 
     /* //TEMP FIX
     public void AddDisplay(UIElement display, string title = "", Rect? bounds = null) //TODO: REMOVE TEMP FIX
@@ -128,12 +144,46 @@ namespace TrackingCam
       if (ptz != null)
         speechSynthesis?.Speak(SPEECH_GREETING);
 
-      TrackingPresenter = true; //start tracking the presenter
+      TrackingPresenter = Settings.Default.TrackingPresenter; //start tracking the presenter based on respective settings value
     }
 
     private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
     {
+      SaveSettings(); //save settings before calling Cleanup
       Cleanup();
+    }
+
+
+    private void cbTrackingPresenter_Checked(object sender, RoutedEventArgs e)
+    {
+
+    }
+
+    private void Settings_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+    {
+      switch (e.PropertyName)
+      {
+        case "TrackingPresenter":
+          TrackingPresenter = Settings.Default.TrackingPresenter;
+          break;
+        case "Tracker":
+          switch (Settings.Default.Tracker)
+          {
+            case "KinectDepth":
+              tracker = trackerKinectDepth;
+              break;
+            case "KinectAudio":
+              tracker = trackerKinectAudio;
+              break;
+            case "Ubisense":
+              tracker = trackerUbisense;
+              break;
+            default:
+              tracker = null;
+              break;
+          }
+          break;
+      }
     }
 
     #endregion

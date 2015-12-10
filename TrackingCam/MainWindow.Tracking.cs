@@ -1,6 +1,6 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: MainWindow.Tracking.cs
-//Version: 20151204
+//Version: 20151210
 
 using System;
 using System.ComponentModel;
@@ -20,14 +20,15 @@ namespace TrackingCam
 
     #region --- Fields ---
 
-    protected IActionable actionableKinectGestures;
-    protected IActionable actionableUbisense;
+    protected IActionable actionableKinectGestures; //=null
+    protected IActionable actionableUbisense; //=null
 
-    protected ITracker trackerKinectAudio;
-    protected ITracker trackerKinectDepth;
-    protected ITracker trackerUbisense;
+    protected ITracker tracker; //=null
+    protected ITracker trackerKinectAudio; //=null
+    protected ITracker trackerKinectDepth; //=null
+    protected ITracker trackerUbisense; //=null
 
-    protected BackgroundWorker presenterTracker;
+    protected BackgroundWorker presenterTracker; //=null
 
     #endregion
 
@@ -97,30 +98,25 @@ namespace TrackingCam
     {
       if (TrackingPresenter) return; //check if already tracking the presenter and do nothing
 
+      Settings.Default.TrackingPresenter = true;
+
       presenterTracker = new BackgroundWorker() { WorkerSupportsCancellation = true };
       presenterTracker.DoWork += (s, e) =>
       {
         while (!e.Cancel)
-        {
-          ITracker tracker = null;
-
-          if (trackerKinectDepth != null)
-            tracker = trackerKinectDepth;
-          else if (trackerKinectAudio != null)
-            tracker = trackerKinectAudio;
-          else if (trackerUbisense != null)
-            tracker = trackerUbisense;
-
           if (tracker != null)
             LookTo(tracker.PositionAngle); //look to presenter
-        }
       };
       presenterTracker.RunWorkerAsync();
     }
 
     public void StopTrackingPresenter()
     {
-      presenterTracker.CancelAsync();
+      if (TrackingPresenter)
+      {
+        Settings.Default.TrackingPresenter = false;
+        presenterTracker.CancelAsync();
+      }
     }
 
     #endregion
