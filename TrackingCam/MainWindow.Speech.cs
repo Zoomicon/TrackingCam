@@ -1,6 +1,6 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: MainWindow.Speech.cs
-//Version: 20151203
+//Version: 20151210
 
 using System;
 using System.Windows;
@@ -75,11 +75,6 @@ namespace TrackingCam
         //This will prevent recognition accuracy from degrading over time.
         speechRecognition.AcousticModelAdaptation = false;
         */
-
-        if ((speechRecognitionKinect != null) && (KinectV1Utils.StartKinectSensor() != null))
-          speechRecognitionKinect.SetInputToKinectSensor(); //if it can't find a Kinect sensor that call will fallback to default audio device for input
-        else
-          speechRecognition.SetInputToDefaultAudioDevice();
 
         speechRecognition.Start();
       }
