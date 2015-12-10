@@ -40,12 +40,6 @@ Version: 20151210
 
   <Grid x:Name="layout" DataContext="{StaticResource settings}">
 
-    <!-- TEMP FIX
-    <Viewbox Stretch="Uniform">
-      <Canvas x:Name="canvas" Width="1000" Height="750"/>
-    </Viewbox>
-    -->
-
     <float:FloatingWindowHost
         x:Name="host"
         SnapinEnabled="True"
@@ -64,7 +58,6 @@ Version: 20151210
             x:Name="cbTrackingPresenter"
             VerticalAlignment="Center"
             IsChecked="{Binding Path=Default.TrackingPresenter, Mode=TwoWay}"
-            Checked="cbTrackingPresenter_Checked"
             />
 
           <Label Content="Tracker:" Target="{Binding ElementName=comboTracker}" />

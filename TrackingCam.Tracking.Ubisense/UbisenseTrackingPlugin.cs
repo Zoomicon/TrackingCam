@@ -1,6 +1,6 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: UbisenseTrackingPlugin.cs
-//Version: 20151204
+//Version: 20151210
 
 using System;
 using System.Collections.Generic;
@@ -24,6 +24,9 @@ namespace TrackingCam.Plugins.Tracking
   {
 
     #region --- Constants ---
+
+    public const string ACTION_BUTTON_1 = "1";
+    public const string ACTION_BUTTON_2 = "2";
 
     public const double DEFAULT_DISTANCE = 0; //if set to 0, will use Z value from ubisence as distance at PositionAngle calculation
 

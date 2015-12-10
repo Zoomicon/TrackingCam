@@ -98,7 +98,8 @@ namespace TrackingCam
     {
       if (TrackingPresenter) return; //check if already tracking the presenter and do nothing
 
-      Settings.Default.TrackingPresenter = true;
+      if (!Settings.Default.TrackingPresenter) //must check this to avoid infinite loop
+        Settings.Default.TrackingPresenter = true;
 
       presenterTracker = new BackgroundWorker() { WorkerSupportsCancellation = true };
       presenterTracker.DoWork += (s, e) =>
@@ -114,9 +115,44 @@ namespace TrackingCam
     {
       if (TrackingPresenter)
       {
-        Settings.Default.TrackingPresenter = false;
+        if (Settings.Default.TrackingPresenter) //must check this to avoid infinite loop
+          Settings.Default.TrackingPresenter = false;
         presenterTracker.CancelAsync();
       }
+    }
+
+    #endregion
+
+    #region Settings
+
+    public void ApplySettings_Tracking()
+    {
+      SetTrackerFromSettings(); //do first
+      SetTrackingPresenterFromSettings();
+    }
+
+    public void SetTrackerFromSettings()
+    {
+      switch (Settings.Default.Tracker)
+      {
+        case TrackingSettings.SETTING_TRACKER_VALUE_KINECT_DEPTH:
+          tracker = trackerKinectDepth;
+          break;
+        case TrackingSettings.SETTING_TRACKER_VALUE_KINECT_AUDIO:
+          tracker = trackerKinectAudio;
+          break;
+        case TrackingSettings.SETTING_TRACKER_VALUE_UBISENSE:
+          tracker = trackerUbisense;
+          break;
+        default:
+          tracker = null;
+          break;
+      }
+    }
+
+    public void SetTrackingPresenterFromSettings()
+    {
+      TrackingPresenter = Settings.Default.TrackingPresenter;
     }
 
     #endregion
@@ -129,19 +165,19 @@ namespace TrackingCam
     {
       switch (action)
       {
-        case "ZoomIn":
+        case KinectV1DepthTrackingPlugin.ACTION_ZOOM_IN:
           if (ptz != null)
             ptz.ZoomLevel = 1;
           break;
-        case "ZoomOut":
+        case KinectV1DepthTrackingPlugin.ACTION_ZOOM_OUT:
           if (ptz != null)
             ptz.ZoomLevel = 0;
           break;
-        case "SwipeLeft":
+        case KinectV1DepthTrackingPlugin.ACTION_SWIPE_LEFT:
           if (ptz != null)
             ptz.PanAngle -= 10;
           break;
-        case "SwipeRight":
+        case KinectV1DepthTrackingPlugin.ACTION_SWIPE_RIGHT:
           if (ptz != null)
             ptz.PanAngle += 10;
           break;
@@ -152,13 +188,13 @@ namespace TrackingCam
     {
       switch (action)
       {
-        case "1":
+        case UbisenseTrackingPlugin.ACTION_BUTTON_1:
           if (ptz != null)
-            ptz.ZoomLevel = 1;
+            ptz.ZoomLevel = 1; //Zoom in
           break;
-        case "2":
+        case UbisenseTrackingPlugin.ACTION_BUTTON_2:
           if (ptz != null)
-            ptz.ZoomLevel = 0;
+            ptz.ZoomLevel = 0; //Zoom out
           break;
       }
     }

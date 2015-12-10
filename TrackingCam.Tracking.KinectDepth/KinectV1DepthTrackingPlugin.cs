@@ -1,6 +1,6 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: KinectV1DepthTrackingPlugin.cs
-//Version: 20151204
+//Version: 20151210
 
 using System;
 using System.ComponentModel.Composition;
@@ -27,6 +27,11 @@ namespace TrackingCam.Plugins.Tracking
     #region --- Constants ---
 
     public const string ACTIONABLE_ID = "KinectGestureRecognizer";
+
+    public const string ACTION_ZOOM_IN = "ZoomIn";
+    public const string ACTION_ZOOM_OUT = "ZoomOut";
+    public const string ACTION_SWIPE_LEFT = "SwipeLeft";
+    public const string ACTION_SWIPE_RIGHT = "SwipeRight";
 
     #endregion
 

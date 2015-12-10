@@ -1,6 +1,6 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: MainWindow.Plugins.cs
-//Version: 20151203
+//Version: 20151210
 
 using System;
 using System.Windows;
@@ -19,7 +19,7 @@ namespace TrackingCam
     public void LoadPlugins()
     {
       LoadVideoPlugins();
-      LoadPTZPlugin();
+      LoadPTZPlugins();
       LoadTrackingPlugins();
       LoadSpeechSynthesisPlugin();
       LoadSpeechRecognitionPlugin();
@@ -30,7 +30,7 @@ namespace TrackingCam
       if (videoFoscam != null) videoFoscam.Stop();
       if (videoKinect != null) videoKinect.Stop();
 
-      object[] plugins = new object[] { videoFoscam, videoKinect, trackerUbisense, trackerKinectAudio, ptz };
+      object[] plugins = new object[] { videoFoscam, videoKinect, trackerKinectDepth, trackerKinectAudio, trackerUbisense, ptzFoscam };
       foreach (object plugin in plugins)
         (plugin as IDisposable)?.Dispose();
 
@@ -41,7 +41,7 @@ namespace TrackingCam
       trackerKinectDepth = null;
       trackerUbisense = null;
 
-      ptz = null;
+      ptzFoscam = null;
     }
 
     #endregion

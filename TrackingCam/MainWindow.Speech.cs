@@ -86,6 +86,15 @@ namespace TrackingCam
       }
     }
 
+    public void Speak(string s)
+    {
+      if (speechSynthesis == null) return;
+
+      if (speechRecognition != null) speechRecognition.Pause();
+      speechSynthesis.Speak(s);
+      if (speechRecognition != null) speechRecognition.Resume();
+    }
+
     #endregion
 
     #region --- Events ---

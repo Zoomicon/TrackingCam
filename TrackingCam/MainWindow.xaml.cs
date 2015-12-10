@@ -2,14 +2,13 @@
 //File: MainWindow.xaml.cs
 //Version: 20151210
 
-//using SilverFlow.Controls;
 using System;
 using System.Windows;
-//using System.Windows.Controls;
 
 using SilverFlow.Controls;
 
 using TrackingCam.Plugins;
+using TrackingCam.Plugins.Tracking;
 using TrackingCam.Plugins.Video;
 using TrackingCam.Properties;
 
@@ -27,6 +26,15 @@ namespace TrackingCam
 
     #endregion
 
+    #region --- Fields ---
+
+    FloatingWindow windowVideoFoscam,
+                   //windowVideoKinect,
+                   windowPTZFoscam,
+                   windowTrackerKinectAudio, windowTrackerKinectDepth, windowTrackerUbisense; //=null
+
+    #endregion
+
     #region --- Initialization ---
 
     public MainWindow()
@@ -39,14 +47,14 @@ namespace TrackingCam
 
     public void InitializeUI()
     {
-      AddDisplayable(videoFoscam, "Video - Foscam IP Camera", new Rect(0, 0, 600, 600)); //IVideo interface extends from IDisplayable
-      //AddDisplayable(videoKinect, "Video - Kinect Color Camera", new Rect(0, 600, 1000, 150)); //IVideo interface extends from IDisplayable
+      windowVideoFoscam = AddDisplayable(videoFoscam, "Video - Foscam IP Camera", new Rect(0, 0, 600, 600)); //IVideo interface extends from IDisplayable
+      //windowVideoKinect = AddDisplayable(videoKinect, "Video - Kinect Color Camera", new Rect(0, 600, 1000, 150)); //IVideo interface extends from IDisplayable
 
-      AddDisplayable(ptz as IDisplayable, "PTZ - Foscam IP Camera", new Rect(600, 400, 200, 200)); //AddDisplayable will ignore the call if null (that is if the tracker isn't an IDisplayable)
+      windowPTZFoscam = AddDisplayable(ptzFoscam as IDisplayable, "PTZ - Foscam IP Camera", new Rect(600, 400, 200, 200)); //AddDisplayable will ignore the call if null (that is if the tracker isn't an IDisplayable)
 
-      AddDisplayable(trackerKinectAudio as IDisplayable, "Tracking - Kinect Microphone Array", new Rect(600, 200, 200, 200)); //AddDisplayable will ignore the call if null (that is if the tracker isn't an IDisplayable)
-      AddDisplayable(trackerKinectDepth as IDisplayable, "Tracking - Kinect Depth", new Rect(800, 200, 400, 400));
-      AddDisplayable(trackerUbisense as IDisplayable, "Tracking - Ubisense", new Rect(600, 0, 450, 200)); //AddDisplayable will ignore the call if null (that is if the tracker isn't an IDisplayable)
+      windowTrackerKinectAudio = AddDisplayable(trackerKinectAudio as IDisplayable, "Tracking - Kinect Microphone Array", new Rect(600, 200, 200, 200)); //AddDisplayable will ignore the call if null (that is if the tracker isn't an IDisplayable)
+      windowTrackerKinectDepth = AddDisplayable(trackerKinectDepth as IDisplayable, "Tracking - Kinect Depth", new Rect(800, 200, 400, 400));
+      windowTrackerUbisense = AddDisplayable(trackerUbisense as IDisplayable, "Tracking - Ubisense", new Rect(600, 0, 450, 200)); //AddDisplayable will ignore the call if null (that is if the tracker isn't an IDisplayable)
     }
 
     #endregion
@@ -65,9 +73,15 @@ namespace TrackingCam
 
     #region Settings
 
+    public void ApplySettings()
+    {
+      ApplySettings_Tracking();
+    }
+
     public void ReloadSettings()
     {
       Settings.Default.Reload();
+      ApplySettings();
     }
 
     public void SaveSettings()
@@ -77,30 +91,16 @@ namespace TrackingCam
 
     #endregion
 
-    /* //TEMP FIX
-    public void AddDisplay(UIElement display, string title = "", Rect? bounds = null) //TODO: REMOVE TEMP FIX
-    {
-      FrameworkElement f = (display as FrameworkElement);
-      if (f == null) return;
+    #region Windows
 
-      Rect r = bounds.HasValue ? bounds.Value : new Rect(0,0,1000,1000);
-
-      f.SetValue(Canvas.LeftProperty, bounds.Value.X);
-      f.SetValue(Canvas.TopProperty, bounds.Value.Y);
-      f.Width = r.Width;
-      f.Height = r.Height;
-
-      canvas.Children.Add(f);
-    }
-    */
-
-    public void AddDisplay(UIElement display, string title="", Rect? bounds = null)
+    public FloatingWindow AddDisplay(UIElement display, string title="", Rect? bounds = null, bool visible = true)
     {
       FloatingWindow window = new FloatingWindow()
       {
         Content = display,
         Title = title,
-        IconText = title
+        IconText = title,
+        Visibility = visible ? Visibility.Visible : Visibility.Hidden
       };
 
       host.Add(window);
@@ -113,26 +113,30 @@ namespace TrackingCam
       }
       else
         window.Show(100, 100);
+
+      return window;
     }
 
-    public void AddDisplayable(IDisplayable displayable, string title="", Rect? bounds = null)
+    public FloatingWindow AddDisplayable(IDisplayable displayable, string title="", Rect? bounds = null, bool visible = true)
     {
-      if (displayable == null) return;
+      if (displayable == null) return null;
 
       UIElement display = displayable.Display;
-      if (display != null)
+      if (display == null) return null;
+
+      FloatingWindow window = AddDisplay(display, title, bounds, visible);
+      try
       {
-        AddDisplay(display, title, bounds);
-        try
-        {
-          (displayable as IVideo)?.Start();
-        }
-        catch (Exception e)
-        {
-          MessageBox.Show((e.InnerException ?? e).Message);
-        }
+        (displayable as IVideo)?.Start();
       }
+      catch (Exception e)
+      {
+        MessageBox.Show((e.InnerException ?? e).Message);
+      }
+      return window;
     }
+
+    #endregion
 
     #endregion
 
@@ -141,10 +145,11 @@ namespace TrackingCam
     private void Window_Loaded(object sender, RoutedEventArgs e)
     {
       InitializeUI();
-      if (ptz != null)
-        speechSynthesis?.Speak(SPEECH_GREETING);
 
-      TrackingPresenter = Settings.Default.TrackingPresenter; //start tracking the presenter based on respective settings value
+      if (ptz != null)
+        Speak(SPEECH_GREETING);
+
+      ApplySettings();
     }
 
     private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -153,35 +158,15 @@ namespace TrackingCam
       Cleanup();
     }
 
-
-    private void cbTrackingPresenter_Checked(object sender, RoutedEventArgs e)
-    {
-
-    }
-
     private void Settings_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
     {
       switch (e.PropertyName)
       {
-        case "TrackingPresenter":
-          TrackingPresenter = Settings.Default.TrackingPresenter;
+        case TrackingSettings.SETTING_TRACKING_PRESENTER:
+          SetTrackingPresenterFromSettings();
           break;
-        case "Tracker":
-          switch (Settings.Default.Tracker)
-          {
-            case "KinectDepth":
-              tracker = trackerKinectDepth;
-              break;
-            case "KinectAudio":
-              tracker = trackerKinectAudio;
-              break;
-            case "Ubisense":
-              tracker = trackerUbisense;
-              break;
-            default:
-              tracker = null;
-              break;
-          }
+        case TrackingSettings.SETTING_TRACKER:
+          SetTrackerFromSettings();
           break;
       }
     }
