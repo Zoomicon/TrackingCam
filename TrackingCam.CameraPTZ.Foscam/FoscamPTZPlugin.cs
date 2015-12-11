@@ -1,6 +1,6 @@
 ﻿//Project: TrackingCam (http://TrackingCam.codeplex.com)
 //File: FoscamPTZPlugin.cs
-//Version: 20151202
+//Version: 20151211
 
 using Camera;
 using Camera.Foscam;
@@ -53,6 +53,7 @@ namespace TrackingCam.Plugins.PTZ
 
     protected string _presetPrefix = DEFAULT_PRESET_PREFIX;
     protected int _presetCount = DEFAULT_PRESET_COUNT;
+    protected string _presetPoint; //=null
 
     #endregion
 
@@ -115,7 +116,7 @@ namespace TrackingCam.Plugins.PTZ
       get { return _ptz;  }
     }
 
-    protected string CurrentPresetPoint
+    protected string PresetPointFromAngles //note: only using the pan angle, since there are only 10 preset points in Foscam cameras
     {
       get
       {
@@ -133,8 +134,14 @@ namespace TrackingCam.Plugins.PTZ
 
       set
       {
+        if (_panAngle == value) return;
         _panAngle = value;
-        _motion.MotionGotoPreset(CurrentPresetPoint);
+        string newPreset = PresetPointFromAngles;
+        if (newPreset != _presetPoint)
+        {
+          _motion.MotionGotoPreset(newPreset);
+          _presetPoint = newPreset;
+        }
       }
     }
 
@@ -147,8 +154,14 @@ namespace TrackingCam.Plugins.PTZ
 
       set
       {
+        if (_tiltAngle == value) return;
         _tiltAngle = value;
-        _motion.MotionGotoPreset(CurrentPresetPoint);
+        string newPreset = PresetPointFromAngles;
+        if (newPreset != _presetPoint)
+        {
+          _motion.MotionGotoPreset(newPreset);
+          _presetPoint = newPreset;
+        }
       }
     }
 

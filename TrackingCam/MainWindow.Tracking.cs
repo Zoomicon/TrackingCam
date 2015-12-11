@@ -6,6 +6,7 @@ using SilverFlow.Controls;
 using System;
 using System.ComponentModel;
 using System.Linq;
+using System.Threading;
 using System.Windows;
 
 using TrackingCam.Plugins;
@@ -107,7 +108,10 @@ namespace TrackingCam
       {
         while (!e.Cancel)
           if (tracker != null)
+          {
             LookTo(tracker.PositionAngle); //look to presenter
+            Thread.Sleep(10); //sleep 10 msec
+          }
       };
       presenterTracker.RunWorkerAsync();
     }
