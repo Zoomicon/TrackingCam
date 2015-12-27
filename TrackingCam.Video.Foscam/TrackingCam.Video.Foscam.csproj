@@ -36,23 +36,23 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CameraControllers, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FoscamController.1.6.0\lib\net45\CameraControllers.dll</HintPath>
+      <HintPath>..\packages\FoscamController.1.8.0\lib\net45\CameraControllers.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="FoscamCameraControllers, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FoscamController.1.6.0\lib\net45\FoscamCameraControllers.dll</HintPath>
+      <HintPath>..\packages\FoscamController.1.8.0\lib\net45\FoscamCameraControllers.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="FoscamHDCameraController, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FoscamController.1.6.0\lib\net45\FoscamHDCameraController.dll</HintPath>
+      <HintPath>..\packages\FoscamController.1.8.0\lib\net45\FoscamHDCameraController.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="FoscamMJPEGCameraController, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FoscamController.1.6.0\lib\net45\FoscamMJPEGCameraController.dll</HintPath>
+      <HintPath>..\packages\FoscamController.1.8.0\lib\net45\FoscamMJPEGCameraController.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="MimeMultiPart, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FoscamController.1.6.0\lib\net45\MimeMultiPart.dll</HintPath>
+      <HintPath>..\packages\FoscamController.1.8.0\lib\net45\MimeMultiPart.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="PresentationCore" />
@@ -60,15 +60,15 @@
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="UpdatingImage, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FoscamController.1.6.0\lib\net45\UpdatingImage.dll</HintPath>
+      <HintPath>..\packages\FoscamController.1.8.0\lib\net45\UpdatingImage.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="xZune.Vlc, Version=15.10.25.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\xZune.Vlc.15.11.24\lib\net45\xZune.Vlc.dll</HintPath>
+    <Reference Include="xZune.Vlc, Version=15.10.25.0, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\packages\xZune.Vlc.15.12.22\lib\net45\x86\xZune.Vlc.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="xZune.Vlc.Wpf, Version=15.10.25.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\xZune.Vlc.Wpf.15.11.24\lib\net45\xZune.Vlc.Wpf.dll</HintPath>
+    <Reference Include="xZune.Vlc.Wpf, Version=15.10.25.0, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\packages\xZune.Vlc.Wpf.15.12.26\lib\net45\x86\xZune.Vlc.Wpf.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
@@ -83,8 +83,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="TrackingCam.Video.Foscam.cd" />
     <None Include="packages.config" />
+    <None Include="TrackingCam.Video.Foscam.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
