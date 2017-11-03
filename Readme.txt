@@ -1,5 +1,4 @@
-TrackingCam
-http://TrackingCam.codeplex.com
+TrackingCam - http://github.com/zoomicon/TrackingCam
 
 Description:
 -------------
